@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A324F3CF2408CCEB00D32640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324F3CE2408CCEB00D32640 /* AppDelegate.swift */; };
+		A324F3D12408CCEC00D32640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324F3D02408CCEC00D32640 /* SceneDelegate.swift */; };
+		A324F3D32408CCEC00D32640 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324F3D22408CCEC00D32640 /* ViewController.swift */; };
+		A324F3D62408CCEC00D32640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A324F3D42408CCEC00D32640 /* Main.storyboard */; };
+		A324F3D82408CCEE00D32640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A324F3D72408CCEE00D32640 /* Assets.xcassets */; };
+		A324F3DB2408CCEE00D32640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A324F3D92408CCEE00D32640 /* LaunchScreen.storyboard */; };
+		A324F3E62408CCEE00D32640 /* BarbellWeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324F3E52408CCEE00D32640 /* BarbellWeightCalculatorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A324F3E22408CCEE00D32640 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A324F3C32408CCEB00D32640 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A324F3CA2408CCEB00D32640;
+			remoteInfo = BarbellWeightCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A324F3CB2408CCEB00D32640 /* BarbellWeightCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellWeightCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A324F3CE2408CCEB00D32640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A324F3D02408CCEC00D32640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A324F3D22408CCEC00D32640 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A324F3D52408CCEC00D32640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A324F3D72408CCEE00D32640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A324F3DA2408CCEE00D32640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A324F3DC2408CCEE00D32640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A324F3E12408CCEE00D32640 /* BarbellWeightCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarbellWeightCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A324F3E52408CCEE00D32640 /* BarbellWeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarbellWeightCalculatorTests.swift; sourceTree = "<group>"; };
+		A324F3E72408CCEE00D32640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A324F3C82408CCEB00D32640 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A324F3DE2408CCEE00D32640 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A324F3C22408CCEB00D32640 = {
+			isa = PBXGroup;
+			children = (
+				A324F3CD2408CCEB00D32640 /* BarbellWeightCalculator */,
+				A324F3E42408CCEE00D32640 /* BarbellWeightCalculatorTests */,
+				A324F3CC2408CCEB00D32640 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A324F3CC2408CCEB00D32640 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A324F3CB2408CCEB00D32640 /* BarbellWeightCalculator.app */,
+				A324F3E12408CCEE00D32640 /* BarbellWeightCalculatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A324F3CD2408CCEB00D32640 /* BarbellWeightCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				A324F3CE2408CCEB00D32640 /* AppDelegate.swift */,
+				A324F3D02408CCEC00D32640 /* SceneDelegate.swift */,
+				A324F3D22408CCEC00D32640 /* ViewController.swift */,
+				A324F3D42408CCEC00D32640 /* Main.storyboard */,
+				A324F3D72408CCEE00D32640 /* Assets.xcassets */,
+				A324F3D92408CCEE00D32640 /* LaunchScreen.storyboard */,
+				A324F3DC2408CCEE00D32640 /* Info.plist */,
+			);
+			path = BarbellWeightCalculator;
+			sourceTree = "<group>";
+		};
+		A324F3E42408CCEE00D32640 /* BarbellWeightCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				A324F3E52408CCEE00D32640 /* BarbellWeightCalculatorTests.swift */,
+				A324F3E72408CCEE00D32640 /* Info.plist */,
+			);
+			path = BarbellWeightCalculatorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A324F3CA2408CCEB00D32640 /* BarbellWeightCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A324F3EA2408CCEE00D32640 /* Build configuration list for PBXNativeTarget "BarbellWeightCalculator" */;
+			buildPhases = (
+				A324F3C72408CCEB00D32640 /* Sources */,
+				A324F3C82408CCEB00D32640 /* Frameworks */,
+				A324F3C92408CCEB00D32640 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BarbellWeightCalculator;
+			productName = BarbellWeightCalculator;
+			productReference = A324F3CB2408CCEB00D32640 /* BarbellWeightCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A324F3E02408CCEE00D32640 /* BarbellWeightCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A324F3ED2408CCEE00D32640 /* Build configuration list for PBXNativeTarget "BarbellWeightCalculatorTests" */;
+			buildPhases = (
+				A324F3DD2408CCEE00D32640 /* Sources */,
+				A324F3DE2408CCEE00D32640 /* Frameworks */,
+				A324F3DF2408CCEE00D32640 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A324F3E32408CCEE00D32640 /* PBXTargetDependency */,
+			);
+			name = BarbellWeightCalculatorTests;
+			productName = BarbellWeightCalculatorTests;
+			productReference = A324F3E12408CCEE00D32640 /* BarbellWeightCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A324F3C32408CCEB00D32640 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Zin Studio";
+				TargetAttributes = {
+					A324F3CA2408CCEB00D32640 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					A324F3E02408CCEE00D32640 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = A324F3CA2408CCEB00D32640;
+					};
+				};
+			};
+			buildConfigurationList = A324F3C62408CCEB00D32640 /* Build configuration list for PBXProject "BarbellWeightCalculator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A324F3C22408CCEB00D32640;
+			productRefGroup = A324F3CC2408CCEB00D32640 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A324F3CA2408CCEB00D32640 /* BarbellWeightCalculator */,
+				A324F3E02408CCEE00D32640 /* BarbellWeightCalculatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A324F3C92408CCEB00D32640 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A324F3DB2408CCEE00D32640 /* LaunchScreen.storyboard in Resources */,
+				A324F3D82408CCEE00D32640 /* Assets.xcassets in Resources */,
+				A324F3D62408CCEC00D32640 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A324F3DF2408CCEE00D32640 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A324F3C72408CCEB00D32640 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A324F3D32408CCEC00D32640 /* ViewController.swift in Sources */,
+				A324F3CF2408CCEB00D32640 /* AppDelegate.swift in Sources */,
+				A324F3D12408CCEC00D32640 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A324F3DD2408CCEE00D32640 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A324F3E62408CCEE00D32640 /* BarbellWeightCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A324F3E32408CCEE00D32640 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A324F3CA2408CCEB00D32640 /* BarbellWeightCalculator */;
+			targetProxy = A324F3E22408CCEE00D32640 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A324F3D42408CCEC00D32640 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A324F3D52408CCEC00D32640 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A324F3D92408CCEE00D32640 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A324F3DA2408CCEE00D32640 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A324F3E82408CCEE00D32640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A324F3E92408CCEE00D32640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A324F3EB2408CCEE00D32640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LSN9P4E87M;
+				INFOPLIST_FILE = BarbellWeightCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ZinStudio.BarbellWeightCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A324F3EC2408CCEE00D32640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LSN9P4E87M;
+				INFOPLIST_FILE = BarbellWeightCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ZinStudio.BarbellWeightCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A324F3EE2408CCEE00D32640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LSN9P4E87M;
+				INFOPLIST_FILE = BarbellWeightCalculatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ZinStudio.BarbellWeightCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarbellWeightCalculator.app/BarbellWeightCalculator";
+			};
+			name = Debug;
+		};
+		A324F3EF2408CCEE00D32640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LSN9P4E87M;
+				INFOPLIST_FILE = BarbellWeightCalculatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ZinStudio.BarbellWeightCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarbellWeightCalculator.app/BarbellWeightCalculator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A324F3C62408CCEB00D32640 /* Build configuration list for PBXProject "BarbellWeightCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A324F3E82408CCEE00D32640 /* Debug */,
+				A324F3E92408CCEE00D32640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A324F3EA2408CCEE00D32640 /* Build configuration list for PBXNativeTarget "BarbellWeightCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A324F3EB2408CCEE00D32640 /* Debug */,
+				A324F3EC2408CCEE00D32640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A324F3ED2408CCEE00D32640 /* Build configuration list for PBXNativeTarget "BarbellWeightCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A324F3EE2408CCEE00D32640 /* Debug */,
+				A324F3EF2408CCEE00D32640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A324F3C32408CCEB00D32640 /* Project object */;
+}
