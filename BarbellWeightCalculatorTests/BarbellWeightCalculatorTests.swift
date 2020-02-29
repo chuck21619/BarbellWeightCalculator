@@ -25,7 +25,7 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(135)
 
         XCTAssert(plates.count == 1)
-        XCTAssert(plates[0].weight == 45)
+        XCTAssert(plates[0] == 45)
     }
     
     func testCalculator_225() {
@@ -33,8 +33,8 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(225)
 
         XCTAssert(plates.count == 2)
-        XCTAssert(plates[0].weight == 45)
-        XCTAssert(plates[1].weight == 45)
+        XCTAssert(plates[0] == 45)
+        XCTAssert(plates[1] == 45)
     }
 
     func testCalculator_185() {
@@ -42,8 +42,8 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(185)
 
         XCTAssert(plates.count == 2)
-        XCTAssert(plates[0].weight == 45)
-        XCTAssert(plates[1].weight == 25)
+        XCTAssert(plates[0] == 45)
+        XCTAssert(plates[1] == 25)
     }
     
     func testCalculator_195() {
@@ -51,9 +51,9 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(195)
 
         XCTAssert(plates.count == 3)
-        XCTAssert(plates[0].weight == 45)
-        XCTAssert(plates[1].weight == 25)
-        XCTAssert(plates[2].weight == 5)
+        XCTAssert(plates[0] == 45)
+        XCTAssert(plates[1] == 25)
+        XCTAssert(plates[2] == 5)
     }
     
     func testCalculator_316() {
@@ -61,11 +61,11 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(316)
 
         XCTAssert(plates.count == 5)
-        XCTAssert(plates[0].weight == 45)
-        XCTAssert(plates[1].weight == 45)
-        XCTAssert(plates[2].weight == 35)
-        XCTAssert(plates[3].weight == 10)
-        XCTAssert(plates[4].weight == 0.5)
+        XCTAssert(plates[0] == 45)
+        XCTAssert(plates[1] == 45)
+        XCTAssert(plates[2] == 35)
+        XCTAssert(plates[3] == 10)
+        XCTAssert(plates[4] == 0.5)
     }
     
     func testCalculator_95p5() {
@@ -73,8 +73,8 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(95.5)
 
         XCTAssert(plates.count == 2)
-        XCTAssert(plates[0].weight == 25)
-        XCTAssert(plates[1].weight == 0.25)
+        XCTAssert(plates[0] == 25)
+        XCTAssert(plates[1] == 0.25)
     }
     
     func testCalculator_95p6() {
@@ -82,7 +82,7 @@ class BarbellWeightCalculatorTests: XCTestCase {
         let plates = self.calculator.calculate(95.6)
 
         XCTAssert(plates.count == 2)
-        XCTAssert(plates[0].weight == 25)
-        XCTAssert(plates[1].weight == 0.25)
+        XCTAssert(plates[0] == 25)
+        XCTAssert(plates[1] == 0.25)
     }
 }

@@ -18,23 +18,23 @@ class Calculator {
         self.inventory = inventory
     }
     
-    func calculate(_ weight: Float) -> [Plate] {
+    func calculate(_ weight: Float) -> [Float] {
         
-        var inventoryCopy = self.inventory.plates
+        var plates = inventory.array
         
-        var platesForOneSide: [Plate] = []
+        var platesForOneSide: [Float] = []
         var remainingWeight = weightWithoutBarbell(weight)
         remainingWeight /= 2
         
-        while remainingWeight != 0, let nextPlate = inventoryCopy.first {
+        while remainingWeight != 0, let nextPlate = plates.first {
             
-            if nextPlate.weight <= remainingWeight {
+            if nextPlate <= remainingWeight {
                 
                 platesForOneSide.append(nextPlate)
-                remainingWeight -= nextPlate.weight
+                remainingWeight -= nextPlate
             }
-
-            inventoryCopy.removeFirst()
+            
+            plates.removeFirst()
         }
         
         return platesForOneSide
@@ -43,11 +43,7 @@ class Calculator {
     
     func weightWithoutBarbell(_ weight: Float) -> Float {
         
-        //TODO: get barbell weight from settings
-        guard let settings = appDelegate()?.settings else {
-            return 0
-        }
-        let barbellWeight = settings.barbellWeight()
+        let barbellWeight = self.inventory.barbellWeight
         return weight - barbellWeight
     }
 }

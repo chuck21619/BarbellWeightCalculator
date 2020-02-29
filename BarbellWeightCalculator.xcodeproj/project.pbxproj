@@ -17,10 +17,10 @@
 		A328F173240A3CE900803EF1 /* PlatesPrintout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328F172240A3CE900803EF1 /* PlatesPrintout.swift */; };
 		A328F17E240A513D00803EF1 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328F17D240A513D00803EF1 /* InventoryCell.swift */; };
 		A328F180240A69D900803EF1 /* InventoryCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328F17F240A69D900803EF1 /* InventoryCellDelegate.swift */; };
+		A328F184240AF7D200803EF1 /* NumberFormatterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328F183240AF7D200803EF1 /* NumberFormatterDelegate.swift */; };
 		A355C0982408F34E0076952F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355C0972408F34E0076952F /* Calculator.swift */; };
 		A355C09A2408F4A50076952F /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355C0992408F4A50076952F /* Plate.swift */; };
 		A39EE392240994F5000AB3F7 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EE391240994F5000AB3F7 /* Inventory.swift */; };
-		A39EE39424099BF5000AB3F7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EE39324099BF5000AB3F7 /* Settings.swift */; };
 		A3F7386A2409DC76000FE6D0 /* WeightedBarbellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F738692409DC76000FE6D0 /* WeightedBarbellImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,10 +49,10 @@
 		A328F172240A3CE900803EF1 /* PlatesPrintout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatesPrintout.swift; sourceTree = "<group>"; };
 		A328F17D240A513D00803EF1 /* InventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
 		A328F17F240A69D900803EF1 /* InventoryCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCellDelegate.swift; sourceTree = "<group>"; };
+		A328F183240AF7D200803EF1 /* NumberFormatterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterDelegate.swift; sourceTree = "<group>"; };
 		A355C0972408F34E0076952F /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		A355C0992408F4A50076952F /* Plate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plate.swift; sourceTree = "<group>"; };
 		A39EE391240994F5000AB3F7 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		A39EE39324099BF5000AB3F7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A3F738692409DC76000FE6D0 /* WeightedBarbellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedBarbellImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,11 +99,11 @@
 				A324F3D02408CCEC00D32640 /* SceneDelegate.swift */,
 				A324F3D22408CCEC00D32640 /* ViewController.swift */,
 				A324F3D42408CCEC00D32640 /* Main.storyboard */,
-				A328F172240A3CE900803EF1 /* PlatesPrintout.swift */,
 				A355C0972408F34E0076952F /* Calculator.swift */,
-				A39EE39324099BF5000AB3F7 /* Settings.swift */,
-				A328F181240ADF0900803EF1 /* Inventory */,
+				A328F172240A3CE900803EF1 /* PlatesPrintout.swift */,
+				A328F183240AF7D200803EF1 /* NumberFormatterDelegate.swift */,
 				A3F738692409DC76000FE6D0 /* WeightedBarbellImageView.swift */,
+				A328F181240ADF0900803EF1 /* Inventory */,
 				A355C0992408F4A50076952F /* Plate.swift */,
 				A324F3D72408CCEE00D32640 /* Assets.xcassets */,
 				A324F3D92408CCEE00D32640 /* LaunchScreen.storyboard */,
@@ -232,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A328F184240AF7D200803EF1 /* NumberFormatterDelegate.swift in Sources */,
 				A328F180240A69D900803EF1 /* InventoryCellDelegate.swift in Sources */,
 				A324F3D32408CCEC00D32640 /* ViewController.swift in Sources */,
 				A355C0982408F34E0076952F /* Calculator.swift in Sources */,
@@ -239,7 +240,6 @@
 				A355C09A2408F4A50076952F /* Plate.swift in Sources */,
 				A328F173240A3CE900803EF1 /* PlatesPrintout.swift in Sources */,
 				A3F7386A2409DC76000FE6D0 /* WeightedBarbellImageView.swift in Sources */,
-				A39EE39424099BF5000AB3F7 /* Settings.swift in Sources */,
 				A324F3CF2408CCEB00D32640 /* AppDelegate.swift in Sources */,
 				A328F17E240A513D00803EF1 /* InventoryCell.swift in Sources */,
 				A324F3D12408CCEC00D32640 /* SceneDelegate.swift in Sources */,

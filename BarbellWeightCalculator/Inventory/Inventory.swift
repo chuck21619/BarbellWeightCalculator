@@ -11,95 +11,70 @@ import UIKit
 
 class Inventory {
     
-    var plates: [Plate]
-    var plateDictionary: [String:[Plate]]
-    var weightValues: [String]
+    var dictionary: [String:String] = [:] {
+        
+        didSet {
+            
+            self.buildArray()
+        }
+    }
     
-    var dictionary = [
-        ["45": "2"],
-        ["35":"1"],
-        ["25":"1"],
-        ["10":"2"],
-        ["5":"1"],
-        ["2.5":"1"],
-        ["1.25":"1"],
-        ["1":"1"],
-        ["0.75":"1"],
-        ["0.5":"1"],
-        ["0.25":"1"]
-    ]
+    var array: [Float] = []
+    
+    var barbellWeight: Float {
+        
+        get {
+            
+            return 45
+        }
+    }
     
     init() {
         
-        guard let image45 = UIImage(named: "45"),
-              let image35 = UIImage(named: "35"),
-              let image25 = UIImage(named: "25"),
-              let image10 = UIImage(named: "10"),
-              let image5 = UIImage(named: "5"),
-              let image2p5 = UIImage(named: "2.5"),
-              let image1p25 = UIImage(named: "1.25"),
-              let image1 = UIImage(named: "1"),
-              let image0p75 = UIImage(named: "0.75"),
-              let image0p5 = UIImage(named: "0.5"),
-              let image0p25 = UIImage(named: "0.25") else {
-                
-            self.plates = []
-            self.plateDictionary = [:]
-            self.weightValues = []
-            return
-        }
-        
-        self.plateDictionary = [
-            "45": [Plate(weight: 45, image: image45), Plate(weight: 45, image: image45)],
-            "35": [Plate(weight: 35, image: image35)],
-            "25": [Plate(weight: 25, image: image25)],
-            "10": [Plate(weight: 10, image: image10), Plate(weight: 10, image: image10)],
-            "5": [Plate(weight: 5, image: image5)],
-            "2.5": [Plate(weight: 2.5, image: image2p5)],
-            "1.25": [Plate(weight: 1.25, image: image1p25)],
-            "1": [Plate(weight: 1, image: image1)],
-            "0.75": [Plate(weight: 0.75, image: image0p75)],
-            "0.5": [Plate(weight: 0.5, image: image0p5)],
-            "0.25": [Plate(weight: 0.25, image: image0p25)]
+        self.dictionary = [
+            "45": "2",
+            "35":"1",
+            "25":"1",
+            "10":"2",
+            "5":"1",
+            "2.5":"1",
+            "1.25":"1",
+            "1":"1",
+            "0.75":"1",
+            "0.5":"1",
+            "0.25":"1"
         ]
         
-        self.weightValues = []
-        self.plates = []
-        self.populatePlates()
+        self.buildArray()
     }
     
     func set(numberOfPlates: Int, for weightValue: String) {
         
-        guard let weight = Float(weightValue),
-              let image = UIImage(named: weightValue) else {
-            return
-        }
-        
-        let plate = Plate(weight: weight, image: image)
-        var plateArray: [Plate] = []
-        for _ in 0..<numberOfPlates {
-            plateArray.append(plate)
-        }
-        
-        self.plateDictionary[weightValue] = plateArray
-        self.populatePlates()
+        self.dictionary[weightValue] = "\(numberOfPlates)"
     }
     
-    func populatePlates() {
+    func buildArray() {
         
-        let weightValues = Array(self.plateDictionary.keys)
-        let sortedWeightValues = weightValues.sorted {(firstValue, secondValue) -> Bool in
-           
-            return Float(firstValue) ?? 0 > Float(secondValue) ?? 0
-        }
-        self.weightValues = sortedWeightValues
+        var array: [Float] = []
         
-        var plates: [Plate] = []
-        for weight in self.weightValues {
+        for (weight, numberOfPlates) in self.dictionary {
             
-            let platesForWeight = self.plateDictionary[weight] ?? []
-            plates.append(contentsOf: platesForWeight)
+            guard let numberOfPlatesInt = Int(numberOfPlates) else {
+                continue
+            }
+            
+            for _ in 0..<numberOfPlatesInt {
+                
+                guard let weightFloat = Float(weight) else {
+                    continue
+                }
+                array.append(weightFloat)
+            }
         }
-        self.plates = plates
+        
+        self.array = array.sorted { (firstValue, secondValue) in
+            
+            return firstValue > secondValue
+        }
     }
 }

@@ -12,6 +12,8 @@ import UIKit
 class WeightedBarbellImageView: UIImageView {
     
     var barbellImageView: UIImageView?
+    var numberFormatter: NumberFormatter?
+    var delegate: NumberFormatterDelegate?
     
     override func didMoveToWindow() {
         
@@ -48,12 +50,29 @@ class WeightedBarbellImageView: UIImageView {
         }
     }
     
-    func addPlates(_ plates: [Plate]) {
+    func setPlates(_ plates: [Float]) {
+        
+        self.clearPlates()
         
         for plate in plates {
             
-            let plateImageView = UIImageView(image: plate.image)
-            let plateCoordinates = nextPlateImageCoordinates(plateImageSize: plate.image.size)
+            guard let numberFormatter = self.delegate?.numberFormatter else {
+                
+                return
+            }
+            
+            guard let plateImageName = numberFormatter.string(from: plate as NSNumber) else {
+                
+                return
+            }
+            
+            guard let plateImage = UIImage(named: "\(plateImageName)") else {
+                
+                return
+            }
+            
+            let plateImageView = UIImageView(image: plateImage)
+            let plateCoordinates = nextPlateImageCoordinates(plateImageSize: plateImage.size)
             plateImageView.frame.origin = plateCoordinates
             self.addSubview(plateImageView)
         }

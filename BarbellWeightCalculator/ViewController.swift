@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, InventoryCellDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, InventoryCellDelegate, NumberFormatterDelegate {
     
     func didChangeInventory() {
         
@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             return 0
         }
         
-        return inventory.plateDictionary.count
+        return inventory.dictionary.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -39,14 +39,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             return cell
         }
         
+        guard indexPath.row < inventory.array.count else {
+            return cell
+        }
+        
         cell.delegate = self
         
-        let weight = inventory.weightValues[indexPath.row]
-        let plates = inventory.plateDictionary[weight] ?? []
+        let weight = inventory.array[indexPath.row]
+        let numberOfPlates = Int(inventory.dictionary["\(weight)"] ?? "0") ?? 0
         
-        cell.stepper.value = Double(plates.count)
+        cell.stepper.value = Double(numberOfPlates)
         cell.plateWeight.text = "\(weight)"
-        cell.numberOfPlates.text = "\(plates.count)"
+        cell.numberOfPlates.text = "\(numberOfPlates)"
         
         return cell
     }
@@ -57,13 +61,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var weightedBarbellImageView: WeightedBarbellImageView!
     @IBOutlet weak var platesPrintout: PlatesPrintout!
     
+    var numberFormatter: NumberFormatter?
     var calculator: Calculator?
     var deleteKeyPressed = false
     var inventory: Inventory?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 0
+        self.numberFormatter = numberFormatter
+        
+        self.platesPrintout.delegate = self
+        self.weightedBarbellImageView.delegate = self
         
         self.weightInputField.becomeFirstResponder()
         weightInputField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
@@ -85,9 +99,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
 
         if deleteKeyPressed {
 
-            self.weightedBarbellImageView.clearPlates()
+            self.weightedBarbellImageView.setPlates([])
             self.weightInputField.text = ""
-            self.platesPrintout.addPlates([])
+            self.platesPrintout.setPlates([])
         }
         
         updateWeights()
@@ -103,9 +117,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             return
         }
 
-        self.weightedBarbellImageView.clearPlates()
-        self.weightedBarbellImageView.addPlates(plates)
-        self.platesPrintout.addPlates(plates)
+        self.weightedBarbellImageView.setPlates(plates)
+        self.platesPrintout.setPlates(plates)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

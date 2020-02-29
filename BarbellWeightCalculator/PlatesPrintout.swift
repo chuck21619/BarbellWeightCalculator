@@ -11,17 +11,11 @@ import UIKit
 
 class PlatesPrintout: UILabel {
     
-    var numberFormatter: NumberFormatter?
+    var delegate: NumberFormatterDelegate?
     
-    func addPlates(_ plates: [Plate]) {
+    func setPlates(_ plates: [Float]) {
         
-        guard let numberFormatter = self.numberFormatter else {
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = .decimal
-            numberFormatter.maximumFractionDigits = 2
-            numberFormatter.minimumFractionDigits = 0
-            self.numberFormatter = numberFormatter
-            self.addPlates(plates)
+        guard let numberFormatter = self.delegate?.numberFormatter else {
             return
         }
         
@@ -29,7 +23,7 @@ class PlatesPrintout: UILabel {
         
         for plate in plates {
             
-            let formattedPlateWeight = numberFormatter.string(from: plate.weight as NSNumber) ?? ""
+            let formattedPlateWeight = numberFormatter.string(from: plate as NSNumber) ?? ""
             plateString.append(formattedPlateWeight)
             plateString.append("  ")
         }
