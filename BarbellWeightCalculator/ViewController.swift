@@ -9,52 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, InventoryCellDelegate, NumberFormatterDelegate {
-    
-    func didChangeInventory() {
-        
-        updateWeights()
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let inventory = self.inventory else {
-            return 0
-        }
-        
-        return inventory.dictionary.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as? InventoryCell else {
-            return tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath)
-        }
-        
-        guard let inventory = self.inventory else {
-            return cell
-        }
-        
-        guard indexPath.row < inventory.array.count else {
-            return cell
-        }
-        
-        cell.delegate = self
-        
-        let weight = inventory.array[indexPath.row]
-        let numberOfPlates = Int(inventory.dictionary["\(weight)"] ?? "0") ?? 0
-        
-        cell.stepper.value = Double(numberOfPlates)
-        cell.plateWeight.text = "\(weight)"
-        cell.numberOfPlates.text = "\(numberOfPlates)"
-        
-        return cell
-    }
-    
 
     @IBOutlet weak var inventoryTableView: UITableView!
     @IBOutlet weak var weightInputField: UITextField!
@@ -65,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var calculator: Calculator?
     var deleteKeyPressed = false
     var inventory: Inventory?
+    var orderedInventoryPlates: [String] = []
     
     override func viewDidLoad() {
         
@@ -86,6 +41,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.calculator = Calculator(inventory: inventory)
         
         self.inventory = appDelegate()?.inventory
+        self.orderedInventoryPlates = self.inventory?.dictionary.keys.sorted() { (firstValue, secondValue) in
+            
+            return Float(firstValue) ?? 0 > Float(secondValue) ?? 0
+        } ?? []
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,18 +52,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         super.viewDidAppear(animated)
         
         self.inventoryTableView.flashScrollIndicators()
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-
-        if deleteKeyPressed {
-
-            self.weightedBarbellImageView.setPlates([])
-            self.weightInputField.text = ""
-            self.platesPrintout.setPlates([])
-        }
-        
-        updateWeights()
     }
     
     func updateWeights() {
@@ -121,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.platesPrintout.setPlates(plates)
     }
     
+    //MARK: - TextField
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if string.count  == 0 && range.length > 0 {
@@ -133,6 +81,61 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
         
         return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        if deleteKeyPressed {
+
+            self.weightedBarbellImageView.setPlates([])
+            self.weightInputField.text = ""
+            self.platesPrintout.setPlates([])
+        }
+        
+        updateWeights()
+    }
+    
+    //MARK: - Tableview datasource and delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.orderedInventoryPlates.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 45
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as? InventoryCell else {
+            return tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath)
+        }
+        
+        guard let inventory = self.inventory else {
+            return cell
+        }
+        
+        guard indexPath.row < self.orderedInventoryPlates.count else {
+            return cell
+        }
+        
+        cell.delegate = self
+        
+        let weight = self.orderedInventoryPlates[indexPath.row]
+        let numberOfPlates = Int(inventory.dictionary[weight] ?? "0") ?? 0
+        
+        cell.stepper.value = Double(numberOfPlates)
+        cell.plateWeight.text = weight
+        cell.numberOfPlates.text = "\(numberOfPlates)"
+        
+        return cell
+    }
+    
+    //MARK: - InventoryCellDelegate
+    func didChangeInventory() {
+        
+        updateWeights()
     }
 }
 
