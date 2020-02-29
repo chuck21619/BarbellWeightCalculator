@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BarbellWeightCalculator.xcodeproj">
+      location = "self:/Users/charlesjohnston/Desktop/projects/ios/BarbellWeightCalculator/BarbellWeightCalculator.xcodeproj">
    </FileRef>
 </Workspace>

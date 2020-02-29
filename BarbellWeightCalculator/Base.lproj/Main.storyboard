@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,131 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BarbellWeightCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSN-as-MTZ">
+                                <rect key="frame" x="20" y="44" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="kqT-T9-420"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="F5G-hG-jrJ"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYA-s2-hUg" customClass="WeightedBarbellImageView" customModule="BarbellWeightCalculator" customModuleProvider="target">
+                                <rect key="frame" x="20" y="86" width="374" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="TLr-TL-rUB"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-Q6-uMv" customClass="PlatesPrintout" customModule="BarbellWeightCalculator" customModuleProvider="target">
+                                <rect key="frame" x="20" y="222" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Fvi-ke-jbS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TRx-Uu-qZy">
+                                <rect key="frame" x="20" y="251" width="374" height="230"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="fX3-38-BMb"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryCell" id="Qnq-Xa-2fO" customClass="InventoryCell" customModule="BarbellWeightCalculator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qnq-Xa-2fO" id="LEX-sQ-Ls3">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iCg-Bc-tC4">
+                                                    <rect key="frame" x="140" y="6" width="94" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="94" id="Zxr-6f-no6"/>
+                                                        <constraint firstAttribute="height" constant="32" id="fO7-id-5d2"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="stepperChanged:" destination="Qnq-Xa-2fO" eventType="valueChanged" id="zsf-s1-ccg"/>
+                                                    </connections>
+                                                </stepper>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkG-j4-5n7">
+                                                    <rect key="frame" x="242" y="11.5" width="112" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="JAv-M5-t8D"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8z-UY-mB0">
+                                                    <rect key="frame" x="20" y="11.5" width="112" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="IeJ-lq-mfX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iCg-Bc-tC4" firstAttribute="leading" secondItem="y8z-UY-mB0" secondAttribute="trailing" constant="8" id="Eqr-UH-Bif"/>
+                                                <constraint firstItem="iCg-Bc-tC4" firstAttribute="centerY" secondItem="LEX-sQ-Ls3" secondAttribute="centerY" id="MxI-cs-cvZ"/>
+                                                <constraint firstItem="y8z-UY-mB0" firstAttribute="centerY" secondItem="LEX-sQ-Ls3" secondAttribute="centerY" id="gR7-ff-qV0"/>
+                                                <constraint firstItem="mkG-j4-5n7" firstAttribute="centerY" secondItem="LEX-sQ-Ls3" secondAttribute="centerY" id="lAX-E6-9ck"/>
+                                                <constraint firstItem="y8z-UY-mB0" firstAttribute="leading" secondItem="LEX-sQ-Ls3" secondAttribute="leading" constant="20" id="qlo-cc-fp8"/>
+                                                <constraint firstItem="iCg-Bc-tC4" firstAttribute="centerX" secondItem="LEX-sQ-Ls3" secondAttribute="centerX" id="twF-Dq-O5Z"/>
+                                                <constraint firstItem="mkG-j4-5n7" firstAttribute="leading" secondItem="iCg-Bc-tC4" secondAttribute="trailing" constant="8" id="vgv-2b-m8x"/>
+                                                <constraint firstAttribute="trailing" secondItem="mkG-j4-5n7" secondAttribute="trailing" constant="20" id="xoU-8p-gO6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="numberOfPlates" destination="mkG-j4-5n7" id="H2K-dw-b5Z"/>
+                                            <outlet property="plateWeight" destination="y8z-UY-mB0" id="PEy-aZ-ckf"/>
+                                            <outlet property="stepper" destination="iCg-Bc-tC4" id="d25-GN-6vm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="51c-25-bGb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="iw0-2O-bto"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TRx-Uu-qZy" secondAttribute="trailing" constant="20" id="0tH-Gr-2TA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PYA-s2-hUg" secondAttribute="trailing" constant="20" id="3WA-Hm-Fqm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LSN-as-MTZ" secondAttribute="trailing" constant="20" id="74i-xJ-0TY"/>
+                            <constraint firstItem="TRx-Uu-qZy" firstAttribute="top" secondItem="lx7-Q6-uMv" secondAttribute="bottom" constant="8" id="7UJ-WR-MIg"/>
+                            <constraint firstItem="PYA-s2-hUg" firstAttribute="top" secondItem="LSN-as-MTZ" secondAttribute="bottom" constant="8" id="DTZ-wh-Zlf"/>
+                            <constraint firstItem="lx7-Q6-uMv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Pb3-zn-7O3"/>
+                            <constraint firstItem="lx7-Q6-uMv" firstAttribute="top" secondItem="PYA-s2-hUg" secondAttribute="bottom" constant="8" id="VNz-Di-boU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lx7-Q6-uMv" secondAttribute="trailing" constant="20" id="kCM-h1-D5d"/>
+                            <constraint firstItem="TRx-Uu-qZy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kfF-cM-woU"/>
+                            <constraint firstItem="LSN-as-MTZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qvX-8R-nBg"/>
+                            <constraint firstItem="LSN-as-MTZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="r39-4b-iKC"/>
+                            <constraint firstItem="PYA-s2-hUg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rUI-yp-kh6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="platesPrintout" destination="lx7-Q6-uMv" id="yBg-Uf-7Kk"/>
+                        <outlet property="weightInputField" destination="LSN-as-MTZ" id="r9J-Kg-dFk"/>
+                        <outlet property="weightedBarbellImageView" destination="PYA-s2-hUg" id="7cc-lt-FFE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

@@ -10,25 +10,79 @@ import XCTest
 @testable import BarbellWeightCalculator
 
 class BarbellWeightCalculatorTests: XCTestCase {
-
+    
+    var calculator: Calculator!
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        super.setUp()
+
+        let inventory = Inventory()
+        self.calculator = Calculator(inventory: inventory)
+    }
+    
+    func testCalculator_135() {
+        
+        let plates = self.calculator.calculate(135)
+
+        XCTAssert(plates.count == 1)
+        XCTAssert(plates[0].weight == 45)
+    }
+    
+    func testCalculator_225() {
+
+        let plates = self.calculator.calculate(225)
+
+        XCTAssert(plates.count == 2)
+        XCTAssert(plates[0].weight == 45)
+        XCTAssert(plates[1].weight == 45)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    func testCalculator_185() {
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        let plates = self.calculator.calculate(185)
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        XCTAssert(plates.count == 2)
+        XCTAssert(plates[0].weight == 45)
+        XCTAssert(plates[1].weight == 25)
     }
+    
+    func testCalculator_195() {
 
+        let plates = self.calculator.calculate(195)
+
+        XCTAssert(plates.count == 3)
+        XCTAssert(plates[0].weight == 45)
+        XCTAssert(plates[1].weight == 25)
+        XCTAssert(plates[2].weight == 5)
+    }
+    
+    func testCalculator_316() {
+
+        let plates = self.calculator.calculate(316)
+
+        XCTAssert(plates.count == 5)
+        XCTAssert(plates[0].weight == 45)
+        XCTAssert(plates[1].weight == 45)
+        XCTAssert(plates[2].weight == 35)
+        XCTAssert(plates[3].weight == 10)
+        XCTAssert(plates[4].weight == 0.5)
+    }
+    
+    func testCalculator_95p5() {
+
+        let plates = self.calculator.calculate(95.5)
+
+        XCTAssert(plates.count == 2)
+        XCTAssert(plates[0].weight == 25)
+        XCTAssert(plates[1].weight == 0.25)
+    }
+    
+    func testCalculator_95p6() {
+
+        let plates = self.calculator.calculate(95.6)
+
+        XCTAssert(plates.count == 2)
+        XCTAssert(plates[0].weight == 25)
+        XCTAssert(plates[1].weight == 0.25)
+    }
 }
