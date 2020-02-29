@@ -54,19 +54,14 @@ class WeightedBarbellImageView: UIImageView {
         
         self.clearPlates()
         
+        guard let numberFormatter = self.delegate?.numberFormatter else {
+            return
+        }
+        
         for plate in plates {
             
-            guard let numberFormatter = self.delegate?.numberFormatter else {
-                
-                return
-            }
-            
-            guard let plateImageName = numberFormatter.string(from: plate as NSNumber) else {
-                
-                return
-            }
-            
-            guard let plateImage = UIImage(named: "\(plateImageName)") else {
+            guard let plateImageName = numberFormatter.string(from: plate as NSNumber),
+                  let plateImage = UIImage(named: "\(plateImageName)") else {
                 
                 return
             }

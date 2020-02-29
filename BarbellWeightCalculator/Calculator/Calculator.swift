@@ -12,6 +12,7 @@ import UIKit
 class Calculator {
     
     private let inventory: Inventory
+    var delegate: CalculatorDelegate?
     
     init(inventory: Inventory) {
         
@@ -37,6 +38,7 @@ class Calculator {
             plates.removeFirst()
         }
         
+        self.delegate?.weightLoaded(offset: remainingWeight*2)
         return platesForOneSide
     }
     

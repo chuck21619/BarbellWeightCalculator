@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate {
     
 
     @IBOutlet weak var inventoryTableView: InventoryTableView!
     @IBOutlet weak var weightInputField: UITextField!
     @IBOutlet weak var weightedBarbellImageView: WeightedBarbellImageView!
     @IBOutlet weak var platesPrintout: PlatesPrintout!
+    @IBOutlet weak var offsetLabel: UILabel!
     
     var numberFormatter: NumberFormatter?
     var calculator: Calculator?
@@ -43,7 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         
         let inventory = appDelegate()?.inventory ?? Inventory()
         self.calculator = Calculator(inventory: inventory)
-        
+        self.calculator?.delegate = self
         self.inventory = appDelegate()?.inventory
     }
     
@@ -68,6 +69,25 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.platesPrintout.setPlates(plates)
     }
     
+    //MARK: - CalculatorDelegate
+    func weightLoaded(offset: Float) {
+        
+//        let offsetString = "\(offset)"
+        guard let offsetString = self.numberFormatter?.string(from: offset as NSNumber) else {
+            self.offsetLabel.text = ""
+            return
+        }
+        
+        if offset != 0 {
+            
+            self.offsetLabel.text = "\(offsetString)"
+        }
+        else {
+            
+            self.offsetLabel.text = ""
+        }
+    }
+    
     //MARK: - TextField
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -90,6 +110,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             self.weightedBarbellImageView.setPlates([])
             self.weightInputField.text = ""
             self.platesPrintout.setPlates([])
+            self.offsetLabel.text = ""
         }
         
         updateWeights()

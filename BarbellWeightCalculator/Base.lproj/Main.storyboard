@@ -16,9 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSN-as-MTZ">
-                                <rect key="frame" x="20" y="44" width="374" height="34"/>
+                                <rect key="frame" x="20" y="44" width="85" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="kqT-T9-420"/>
+                                    <constraint firstAttribute="width" constant="85" id="xs7-0h-RSr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -104,19 +105,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-t9-uF2">
+                                <rect key="frame" x="394" y="44" width="0.0" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dXI-2S-EYI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TRx-Uu-qZy" secondAttribute="trailing" constant="20" id="0tH-Gr-2TA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PYA-s2-hUg" secondAttribute="trailing" constant="20" id="3WA-Hm-Fqm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LSN-as-MTZ" secondAttribute="trailing" constant="20" id="74i-xJ-0TY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EYh-t9-uF2" secondAttribute="trailing" constant="20" id="5a1-Fx-ebY"/>
                             <constraint firstItem="TRx-Uu-qZy" firstAttribute="top" secondItem="lx7-Q6-uMv" secondAttribute="bottom" constant="8" id="7UJ-WR-MIg"/>
                             <constraint firstItem="PYA-s2-hUg" firstAttribute="top" secondItem="LSN-as-MTZ" secondAttribute="bottom" constant="8" id="DTZ-wh-Zlf"/>
                             <constraint firstItem="lx7-Q6-uMv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Pb3-zn-7O3"/>
+                            <constraint firstItem="LSN-as-MTZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QKE-kx-Kz5"/>
                             <constraint firstItem="lx7-Q6-uMv" firstAttribute="top" secondItem="PYA-s2-hUg" secondAttribute="bottom" constant="8" id="VNz-Di-boU"/>
+                            <constraint firstItem="EYh-t9-uF2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aWN-MQ-abX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lx7-Q6-uMv" secondAttribute="trailing" constant="20" id="kCM-h1-D5d"/>
                             <constraint firstItem="TRx-Uu-qZy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kfF-cM-woU"/>
-                            <constraint firstItem="LSN-as-MTZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qvX-8R-nBg"/>
                             <constraint firstItem="LSN-as-MTZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="r39-4b-iKC"/>
                             <constraint firstItem="PYA-s2-hUg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rUI-yp-kh6"/>
                         </constraints>
@@ -124,6 +135,7 @@
                     </view>
                     <connections>
                         <outlet property="inventoryTableView" destination="TRx-Uu-qZy" id="dIA-Jf-0ZK"/>
+                        <outlet property="offsetLabel" destination="EYh-t9-uF2" id="oHI-e8-X51"/>
                         <outlet property="platesPrintout" destination="lx7-Q6-uMv" id="yBg-Uf-7Kk"/>
                         <outlet property="weightInputField" destination="LSN-as-MTZ" id="r9J-Kg-dFk"/>
                         <outlet property="weightedBarbellImageView" destination="PYA-s2-hUg" id="7cc-lt-FFE"/>
