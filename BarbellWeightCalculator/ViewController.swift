@@ -25,6 +25,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return inventory.plateDictionary.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as? InventoryCell else {
@@ -48,6 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
 
+    @IBOutlet weak var inventoryTableView: UITableView!
     @IBOutlet weak var weightInputField: UITextField!
     @IBOutlet weak var weightedBarbellImageView: WeightedBarbellImageView!
     @IBOutlet weak var platesPrintout: PlatesPrintout!
@@ -67,6 +72,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.calculator = Calculator(inventory: inventory)
         
         self.inventory = appDelegate()?.inventory
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        self.inventoryTableView.flashScrollIndicators()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

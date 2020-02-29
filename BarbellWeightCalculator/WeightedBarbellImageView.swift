@@ -63,7 +63,7 @@ class WeightedBarbellImageView: UIImageView {
 
         
         let rightMostSubview = self.rightMostPlateView()
-        let x = rightMostSubview?.frame.maxX ?? 30
+        let x = rightMostSubview?.frame.maxX ?? 39
         
         let y = (self.frame.height - plateImageSize.height)/2
         

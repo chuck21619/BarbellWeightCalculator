@@ -102,9 +102,7 @@
 				A328F172240A3CE900803EF1 /* PlatesPrintout.swift */,
 				A355C0972408F34E0076952F /* Calculator.swift */,
 				A39EE39324099BF5000AB3F7 /* Settings.swift */,
-				A328F17D240A513D00803EF1 /* InventoryCell.swift */,
-				A328F17F240A69D900803EF1 /* InventoryCellDelegate.swift */,
-				A39EE391240994F5000AB3F7 /* Inventory.swift */,
+				A328F181240ADF0900803EF1 /* Inventory */,
 				A3F738692409DC76000FE6D0 /* WeightedBarbellImageView.swift */,
 				A355C0992408F4A50076952F /* Plate.swift */,
 				A324F3D72408CCEE00D32640 /* Assets.xcassets */,
@@ -121,6 +119,16 @@
 				A324F3E72408CCEE00D32640 /* Info.plist */,
 			);
 			path = BarbellWeightCalculatorTests;
+			sourceTree = "<group>";
+		};
+		A328F181240ADF0900803EF1 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				A39EE391240994F5000AB3F7 /* Inventory.swift */,
+				A328F17D240A513D00803EF1 /* InventoryCell.swift */,
+				A328F17F240A69D900803EF1 /* InventoryCellDelegate.swift */,
+			);
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

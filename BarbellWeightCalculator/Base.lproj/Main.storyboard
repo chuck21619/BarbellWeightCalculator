@@ -127,6 +127,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="inventoryTableView" destination="TRx-Uu-qZy" id="dIA-Jf-0ZK"/>
                         <outlet property="platesPrintout" destination="lx7-Q6-uMv" id="yBg-Uf-7Kk"/>
                         <outlet property="weightInputField" destination="LSN-as-MTZ" id="r9J-Kg-dFk"/>
                         <outlet property="weightedBarbellImageView" destination="PYA-s2-hUg" id="7cc-lt-FFE"/>

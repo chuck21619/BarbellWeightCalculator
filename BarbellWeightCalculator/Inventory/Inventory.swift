@@ -15,13 +15,33 @@ class Inventory {
     var plateDictionary: [String:[Plate]]
     var weightValues: [String]
     
+    var dictionary = [
+        ["45": "2"],
+        ["35":"1"],
+        ["25":"1"],
+        ["10":"2"],
+        ["5":"1"],
+        ["2.5":"1"],
+        ["1.25":"1"],
+        ["1":"1"],
+        ["0.75":"1"],
+        ["0.5":"1"],
+        ["0.25":"1"]
+    ]
+    
     init() {
         
         guard let image45 = UIImage(named: "45"),
               let image35 = UIImage(named: "35"),
               let image25 = UIImage(named: "25"),
               let image10 = UIImage(named: "10"),
-              let image5 = UIImage(named: "5") else {
+              let image5 = UIImage(named: "5"),
+              let image2p5 = UIImage(named: "2.5"),
+              let image1p25 = UIImage(named: "1.25"),
+              let image1 = UIImage(named: "1"),
+              let image0p75 = UIImage(named: "0.75"),
+              let image0p5 = UIImage(named: "0.5"),
+              let image0p25 = UIImage(named: "0.25") else {
                 
             self.plates = []
             self.plateDictionary = [:]
@@ -35,12 +55,12 @@ class Inventory {
             "25": [Plate(weight: 25, image: image25)],
             "10": [Plate(weight: 10, image: image10), Plate(weight: 10, image: image10)],
             "5": [Plate(weight: 5, image: image5)],
-            "2.5": [Plate(weight: 2.5, image: image5)],
-            "1.25": [Plate(weight: 1.25, image: image5)],
-            "1": [Plate(weight: 1, image: image5)],
-            "0.75": [Plate(weight: 0.75, image: image5)],
-            "0.5": [Plate(weight: 0.5, image: image5)],
-            "0.25": [Plate(weight: 0.25, image: image5)]
+            "2.5": [Plate(weight: 2.5, image: image2p5)],
+            "1.25": [Plate(weight: 1.25, image: image1p25)],
+            "1": [Plate(weight: 1, image: image1)],
+            "0.75": [Plate(weight: 0.75, image: image0p75)],
+            "0.5": [Plate(weight: 0.5, image: image0p5)],
+            "0.25": [Plate(weight: 0.25, image: image0p25)]
         ]
         
         self.weightValues = []
