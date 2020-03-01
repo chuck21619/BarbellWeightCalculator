@@ -17,7 +17,6 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var inventoryTableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var inventoryTableBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var percentageSlider: UISlider!
     @IBOutlet weak var adjustedLabel: UILabel!
@@ -118,9 +117,12 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.inventoryTableBottomConstraint.constant = keyboardSize.height
         
         //calc height of table
-        let bottomOfPrintout = self.platesPrintout.frame.maxY
-        let diffOfBottomOfPrintoutAndBottomOfView = self.view.frame.maxY - bottomOfPrintout
-        self.inventoryTableHeight = (diffOfBottomOfPrintoutAndBottomOfView - keyboardSize.height) - 50
+        let heightToWorkWith = (self.view.frame.size.height - keyboardSize.height) - self.weightedBarbellImageView.frame.minY
+        let minimumBarbellImageViewHeight: CGFloat = 200
+        let maximumTableHeight = heightToWorkWith - minimumBarbellImageViewHeight
+        let desiredHeight = heightToWorkWith * 0.66
+        let tableHeight = min(maximumTableHeight, desiredHeight)
+        self.inventoryTableHeight = tableHeight
         
         self.view.layoutIfNeeded()
     }

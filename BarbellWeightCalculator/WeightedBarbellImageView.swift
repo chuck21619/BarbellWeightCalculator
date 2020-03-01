@@ -21,6 +21,22 @@ class WeightedBarbellImageView: UIImageView {
         self.addBarbell()
     }
     
+//    func addBarbell() {
+//
+//        let barbellImage = UIImage(named: "barbell")
+//        self.barbellImageView = UIImageView(image: barbellImage)
+//
+//        guard let barbellImageView = self.barbellImageView else {
+//            return
+//        }
+//        let barbellImageViewHeight = barbellImageView.frame.size.height
+//
+//        let y = (self.frame.height - barbellImageViewHeight)/2
+//        let barbellCoordinates = CGPoint(x: 0, y: y)
+//
+//        self.barbellImageView?.frame.origin = barbellCoordinates
+//        self.addSubview(barbellImageView)
+//    }
     func addBarbell() {
         
         let barbellImage = UIImage(named: "barbell")
@@ -30,12 +46,17 @@ class WeightedBarbellImageView: UIImageView {
             return
         }
         let barbellImageViewHeight = barbellImageView.frame.size.height
-        
+
         let y = (self.frame.height - barbellImageViewHeight)/2
         let barbellCoordinates = CGPoint(x: 0, y: y)
         
-        self.barbellImageView?.frame.origin = barbellCoordinates
+        barbellImageView.frame.origin = barbellCoordinates
         self.addSubview(barbellImageView)
+        barbellImageView.translatesAutoresizingMaskIntoConstraints = false
+        let centerYConstraint = NSLayoutConstraint(item: barbellImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
+        let leadingContrainst = NSLayoutConstraint(item: barbellImageView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        self.addConstraint(leadingContrainst)
+        self.addConstraint(centerYConstraint)
     }
     
     func clearPlates() {
@@ -70,6 +91,12 @@ class WeightedBarbellImageView: UIImageView {
             let plateCoordinates = nextPlateImageCoordinates(plateImageSize: plateImage.size)
             plateImageView.frame.origin = plateCoordinates
             self.addSubview(plateImageView)
+            
+            plateImageView.translatesAutoresizingMaskIntoConstraints = false
+            let centerYConstraint = NSLayoutConstraint(item: plateImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
+            let leadingContrainst = NSLayoutConstraint(item: plateImageView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: plateCoordinates.x)
+            self.addConstraint(leadingContrainst)
+            self.addConstraint(centerYConstraint)
         }
     }
     

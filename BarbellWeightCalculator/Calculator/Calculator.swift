@@ -25,7 +25,15 @@ class Calculator {
         var platesForOneSide: [Float] = []
         
         let weightTimesPercentage = weight * ((atPercent ?? 100)/100)
-        let roundedWeight = (weightTimesPercentage * 100).rounded() / 100
+        let roundedWeight: Float
+        if let percentage = atPercent, percentage != 100 {
+            
+            roundedWeight = Float(5 * Int((weightTimesPercentage / 5.0).rounded()))
+        }
+        else {
+            
+            roundedWeight = (weightTimesPercentage * 100).rounded() / 100
+        }
         var remainingWeight = weightWithoutBarbell(roundedWeight)
         remainingWeight /= 2
         
