@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     @IBOutlet weak var weightedBarbellImageView: WeightedBarbellImageView!
     @IBOutlet weak var platesPrintout: PlatesPrintout!
     @IBOutlet weak var offsetLabel: UILabel!
+    @IBOutlet weak var inventoryTableHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var inventoryTableBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var percentageSlider: UISlider!
@@ -25,6 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     var deleteKeyPressed = false
     var settings: Settings? = nil
     var previousSliderValue: Int = 100
+    var inventoryIsHidden = true
     
     @IBAction func percentageChanged(_ sender: Any) {
 
@@ -43,9 +46,42 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         updateWeights()
     }
     
+    @IBAction func inventoryButtonPushed(_ sender: Any) {
+        
+        self.view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.1) {
+        if self.inventoryIsHidden == true {
+            
+            self.showInventory()
+        }
+        else {
+            
+            self.hideInventory()
+        }
+        
+            
+            self.view.layoutIfNeeded()
+        }
+//        self.view.setNeedsUpdateConstraints()
+        self.inventoryIsHidden = !self.inventoryIsHidden
+    }
+    
+    func hideInventory() {
+        
+        self.inventoryTableHeightConstraint.constant = 0
+    }
+    
+    func showInventory() {
+        
+        self.inventoryTableHeightConstraint.constant = 180
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         self.inventoryTableView.delegate = self.inventoryTableView
         self.inventoryTableView.dataSource = self.inventoryTableView
@@ -68,6 +104,18 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.calculator = Calculator(inventory: inventory)
         self.calculator?.delegate = self
         self.settings = appDelegate()?.settings
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        
+        guard let keyboardSize = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+        
+        print(keyboardSize)
+        
+        self.inventoryTableBottomConstraint.constant = keyboardSize.height
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
