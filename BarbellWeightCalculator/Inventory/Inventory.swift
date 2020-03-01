@@ -35,12 +35,12 @@ class Inventory {
     lazy var defaultInventory: [String:String] = {
        
         return [
-            "45": "4",
-            "35":"1",
-            "25":"1",
-            "10":"2",
-            "5":"1",
-            "2.5":"1",
+            "45": "6",
+            "35":"2",
+            "25":"2",
+            "10":"4",
+            "5":"2",
+            "2.5":"2",
             "1.25":"0",
             "1":"0",
             "0.75":"0",
@@ -70,7 +70,7 @@ class Inventory {
                 continue
             }
             
-            for _ in 0..<numberOfPlatesInt {
+            for _ in 0..<numberOfPlatesInt/2 {
                 
                 guard let weightFloat = Float(weight) else {
                     continue
