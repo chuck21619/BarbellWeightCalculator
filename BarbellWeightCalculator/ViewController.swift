@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     var settings: Settings? = nil
     var previousSliderValue: Int = 100
     var inventoryIsHidden = true
+    var inventoryTableHeight: CGFloat = 0
     
     @IBAction func percentageChanged(_ sender: Any) {
 
@@ -74,7 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     
     func showInventory() {
         
-        self.inventoryTableHeightConstraint.constant = 180
+        self.inventoryTableHeightConstraint.constant = self.inventoryTableHeight
     }
     
     override func viewDidLoad() {
@@ -115,6 +116,12 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         print(keyboardSize)
         
         self.inventoryTableBottomConstraint.constant = keyboardSize.height
+        
+        //calc height of table
+        let bottomOfPrintout = self.platesPrintout.frame.maxY
+        let diffOfBottomOfPrintoutAndBottomOfView = self.view.frame.maxY - bottomOfPrintout
+        self.inventoryTableHeight = (diffOfBottomOfPrintoutAndBottomOfView - keyboardSize.height) - 50
+        
         self.view.layoutIfNeeded()
     }
     
