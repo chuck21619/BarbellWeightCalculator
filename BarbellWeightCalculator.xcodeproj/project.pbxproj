@@ -118,7 +118,6 @@
 				A328F196240B9A1A00803EF1 /* IncrementalSlider.swift */,
 				A328F18D240B192F00803EF1 /* Calculator */,
 				A328F172240A3CE900803EF1 /* PlatesPrintout.swift */,
-				A328F18A240B086300803EF1 /* InventoryTableView */,
 				A328F183240AF7D200803EF1 /* NumberFormatterDelegate.swift */,
 				A3F738692409DC76000FE6D0 /* WeightedBarbellImageView.swift */,
 				A328F181240ADF0900803EF1 /* Inventory */,
@@ -142,6 +141,7 @@
 		A328F181240ADF0900803EF1 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				A328F18A240B086300803EF1 /* InventoryTableView */,
 				A39EE391240994F5000AB3F7 /* Inventory.swift */,
 				A328F194240B763E00803EF1 /* InventoryDelegate.swift */,
 				A328F17D240A513D00803EF1 /* InventoryCell.swift */,
