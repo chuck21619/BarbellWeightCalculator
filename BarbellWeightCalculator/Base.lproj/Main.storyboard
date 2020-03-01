@@ -126,7 +126,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlf-nx-JJg">
                                 <rect key="frame" x="171.5" y="264" width="71" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="Wle-mg-Jgd"/>
                                     <constraint firstAttribute="height" constant="21" id="gYe-5w-2UF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -134,9 +133,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lb @" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-aV-xHy">
-                                <rect key="frame" x="113" y="50.5" width="45" height="21"/>
+                                <rect key="frame" x="113" y="50.5" width="39" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="QT8-9M-8tb"/>
                                     <constraint firstAttribute="height" constant="21" id="w4a-go-GKT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -144,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-om-slb">
-                                <rect key="frame" x="164" y="46" width="164" height="31"/>
+                                <rect key="frame" x="158" y="46" width="170" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gwu-YJ-T4C"/>
                                 </constraints>
@@ -156,7 +154,7 @@
                                 <rect key="frame" x="334" y="50.5" width="60" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2zb-nx-cd9"/>
-                                    <constraint firstAttribute="width" constant="60" id="frI-QJ-Z6F"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="frI-QJ-Z6F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,6 +185,7 @@
                             <constraint firstItem="LSN-as-MTZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="r39-4b-iKC"/>
                             <constraint firstItem="AV0-aV-xHy" firstAttribute="leading" secondItem="LSN-as-MTZ" secondAttribute="trailing" constant="8" id="rBc-FX-sJ8"/>
                             <constraint firstItem="PYA-s2-hUg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rUI-yp-kh6"/>
+                            <constraint firstItem="EYh-t9-uF2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m5e-Ox-hom" secondAttribute="trailing" id="uBF-AP-cYZ"/>
                             <constraint firstItem="TA6-4e-scc" firstAttribute="centerY" secondItem="LSN-as-MTZ" secondAttribute="centerY" id="udk-Kv-rmh"/>
                             <constraint firstItem="Rlf-nx-JJg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v1d-38-dtr"/>
                         </constraints>

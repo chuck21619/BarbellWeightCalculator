@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate {
-    
+class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate, InventoryDelegate {
 
     @IBOutlet weak var inventoryTableView: InventoryTableView!
     @IBOutlet weak var weightInputField: UITextField!
@@ -24,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     var numberFormatter: NumberFormatter?
     var calculator: Calculator?
     var deleteKeyPressed = false
-    var inventory: Inventory?
+    var settings: Settings? = nil
     var previousSliderValue: Int = 100
     
     @IBAction func percentageChanged(_ sender: Any) {
@@ -63,10 +62,11 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.weightInputField.becomeFirstResponder()
         weightInputField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
-        let inventory = appDelegate()?.inventory ?? Inventory()
+        let inventory = appDelegate()?.settings.inventory ?? Inventory(with: nil)
+        inventory.delegate = self
         self.calculator = Calculator(inventory: inventory)
         self.calculator?.delegate = self
-        self.inventory = appDelegate()?.inventory
+        self.settings = appDelegate()?.settings
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +93,6 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     //MARK: - CalculatorDelegate
     func weightLoaded(total: Float, offset: Float) {
         
-//        let offsetString = "\(offset)"
         guard let offsetString = self.numberFormatter?.string(from: offset as NSNumber) else {
             self.offsetLabel.text = ""
             return
@@ -152,14 +151,27 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         }
     }
     
-    //MARK: - InventoryTableViewDelegate
+    //MARK: - InventoryDelegate
     func didChangeInventory() {
         
         updateWeights()
+        
+        guard let inventoryDictionary = self.settings?.inventory?.dictionary else {
+            return
+        }
+        
+        appDelegate()?.settings.saveInventoryDictionary(inventoryDictionary)
     }
     
+    //MARK: - InventoryTableViewDelegate
     func getInventory() -> Inventory? {
         
-        return self.inventory
+        return self.settings?.inventory
+    }
+    
+    //MARK: - InventoryCellDelegate
+    func set(numberOfPlates: Int, for weightValue: String) {
+    
+        self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weightValue)
     }
 }

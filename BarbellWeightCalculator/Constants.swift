@@ -1,5 +1,5 @@
 //
-//  InventoryCellDelegate.swift
+//  Constants.swift
 //  BarbellWeightCalculator
 //
 //  Created by charles johnston on 2/29/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol InventoryCellDelegate {
+class Constants {
     
-    func set(numberOfPlates: Int, for weightValue: String)
+    static let dictionaryDefaultsKey = "inventoryDictionary"
 }

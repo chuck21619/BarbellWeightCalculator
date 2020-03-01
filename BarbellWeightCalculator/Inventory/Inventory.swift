@@ -11,11 +11,14 @@ import UIKit
 
 class Inventory {
     
+    var delegate: InventoryDelegate?
+    
     var dictionary: [String:String] = [:] {
         
         didSet {
             
             self.buildArray()
+            self.delegate?.didChangeInventory()
         }
     }
     
@@ -29,9 +32,9 @@ class Inventory {
         }
     }
     
-    init() {
-        
-        self.dictionary = [
+    lazy var defaultInventory: [String:String] = {
+       
+        return [
             "45": "2",
             "35":"1",
             "25":"1",
@@ -44,7 +47,11 @@ class Inventory {
             "0.5":"1",
             "0.25":"1"
         ]
+    }()
+    
+    init(with dictionary: [String:String]?) {
         
+        self.dictionary = dictionary ?? defaultInventory
         self.buildArray()
     }
     

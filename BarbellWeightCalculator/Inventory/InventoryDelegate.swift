@@ -1,5 +1,5 @@
 //
-//  InventoryCellDelegate.swift
+//  InventoryDelegate.swift
 //  BarbellWeightCalculator
 //
 //  Created by charles johnston on 2/29/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol InventoryCellDelegate {
+protocol InventoryDelegate {
     
-    func set(numberOfPlates: Int, for weightValue: String)
+    func didChangeInventory()
 }

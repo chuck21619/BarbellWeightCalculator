@@ -14,8 +14,8 @@ func appDelegate() -> AppDelegate? {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var inventory = Inventory()
+    
+    var settings = Settings()
     
     //MARK: UIApplicationDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
