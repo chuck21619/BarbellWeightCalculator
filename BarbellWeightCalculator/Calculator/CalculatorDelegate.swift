@@ -10,5 +10,5 @@ import Foundation
 
 protocol CalculatorDelegate {
     
-    func weightLoaded(offset: Float)
+    func weightLoaded(total: Float, offset: Float)
 }

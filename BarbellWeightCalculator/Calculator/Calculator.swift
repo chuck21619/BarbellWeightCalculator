@@ -19,12 +19,13 @@ class Calculator {
         self.inventory = inventory
     }
     
-    func calculate(_ weight: Float) -> [Float] {
+    func calculate(_ weight: Float, atPercent: Float? = nil) -> [Float] {
         
         var plates = inventory.array
         
         var platesForOneSide: [Float] = []
-        var remainingWeight = weightWithoutBarbell(weight)
+        let adjustedWeight = weight * ((atPercent ?? 100)/100)
+        var remainingWeight = weightWithoutBarbell(adjustedWeight)
         remainingWeight /= 2
         
         while remainingWeight != 0, let nextPlate = plates.first {
@@ -38,7 +39,7 @@ class Calculator {
             plates.removeFirst()
         }
         
-        self.delegate?.weightLoaded(offset: remainingWeight*2)
+        self.delegate?.weightLoaded(total: adjustedWeight, offset: remainingWeight*2)
         return platesForOneSide
     }
     

@@ -17,10 +17,31 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     @IBOutlet weak var platesPrintout: PlatesPrintout!
     @IBOutlet weak var offsetLabel: UILabel!
     
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var percentageSlider: UISlider!
+    @IBOutlet weak var adjustedLabel: UILabel!
+    
     var numberFormatter: NumberFormatter?
     var calculator: Calculator?
     var deleteKeyPressed = false
     var inventory: Inventory?
+    var previousSliderValue: Int = 100
+    
+    @IBAction func percentageChanged(_ sender: Any) {
+
+        let sliderValue = self.percentageSlider.value
+        let roundedValue = 5 * Int((sliderValue / 5.0).rounded())
+        
+        guard roundedValue != self.previousSliderValue else {
+            return
+        }
+        
+        self.percentageLabel.text = "\(roundedValue)%"
+        self.previousSliderValue = roundedValue
+        self.percentageSlider.value = Float(roundedValue)
+        
+        updateWeights()
+    }
     
     override func viewDidLoad() {
         
@@ -61,7 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             return
         }
         
-        guard let plates = self.calculator?.calculate(weight) else {
+        guard let plates = self.calculator?.calculate(weight, atPercent: self.percentageSlider.value) else {
             return
         }
 
@@ -70,7 +91,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     }
     
     //MARK: - CalculatorDelegate
-    func weightLoaded(offset: Float) {
+    func weightLoaded(total: Float, offset: Float) {
         
 //        let offsetString = "\(offset)"
         guard let offsetString = self.numberFormatter?.string(from: offset as NSNumber) else {
@@ -85,6 +106,16 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         else {
             
             self.offsetLabel.text = ""
+        }
+        
+        if self.percentageSlider.value != 100 {
+            
+            let formattedTotal = self.numberFormatter?.string(from: total as NSNumber) ?? "\(total)"
+            self.adjustedLabel.text = formattedTotal
+        }
+        else {
+            
+            self.adjustedLabel.text = ""
         }
     }
     
@@ -107,13 +138,18 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
 
         if deleteKeyPressed {
 
+            self.percentageSlider.value = 100
+            self.percentageLabel.text = "100%"
             self.weightedBarbellImageView.setPlates([])
             self.weightInputField.text = ""
             self.platesPrintout.setPlates([])
             self.offsetLabel.text = ""
+            self.adjustedLabel.text = ""
         }
-        
-        updateWeights()
+        else {
+            
+            updateWeights()
+        }
     }
     
     //MARK: - InventoryTableViewDelegate
