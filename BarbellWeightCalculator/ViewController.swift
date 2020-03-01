@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
 
         let sliderValue = self.percentageSlider.value
         let roundedValue = 5 * Int((sliderValue / 5.0).rounded())
+        self.percentageSlider.setValue(Float(roundedValue), animated: false)
         
         guard roundedValue != self.previousSliderValue else {
             return
@@ -82,7 +83,9 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             return
         }
         
-        guard let plates = self.calculator?.calculate(weight, atPercent: self.percentageSlider.value) else {
+        let sliderValue = self.percentageSlider.value
+        let roundedSliderValue = 5 * Int((sliderValue / 5.0).rounded())
+        guard let plates = self.calculator?.calculate(weight, atPercent: Float(roundedSliderValue)) else {
             return
         }
 
