@@ -44,10 +44,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TRx-Uu-qZy" customClass="InventoryTableView" customModule="BarbellWeightCalculator" customModuleProvider="target">
-                                <rect key="frame" x="20" y="293" width="374" height="190"/>
+                                <rect key="frame" x="20" y="293" width="374" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="190" id="fX3-38-BMb"/>
+                                    <constraint firstAttribute="height" constant="180" id="fX3-38-BMb"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryCell" id="Qnq-Xa-2fO" customClass="InventoryCell" customModule="BarbellWeightCalculator" customModuleProvider="target">
@@ -104,6 +104,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-t9-uF2">
                                 <rect key="frame" x="394" y="86" width="0.0" height="30"/>
@@ -132,8 +137,8 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lb @" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-aV-xHy">
-                                <rect key="frame" x="113" y="50.5" width="39" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lb @" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-aV-xHy">
+                                <rect key="frame" x="113" y="50.5" width="34" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="w4a-go-GKT"/>
                                 </constraints>
@@ -142,7 +147,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-om-slb">
-                                <rect key="frame" x="158" y="46" width="170" height="31"/>
+                                <rect key="frame" x="153" y="46" width="175" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gwu-YJ-T4C"/>
                                 </constraints>
