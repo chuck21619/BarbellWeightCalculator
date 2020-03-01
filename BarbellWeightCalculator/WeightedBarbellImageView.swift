@@ -77,10 +77,11 @@ class WeightedBarbellImageView: UIImageView {
 
         
         let rightMostSubview = self.rightMostPlateView()
-        let x = rightMostSubview?.frame.maxX ?? 39
-        
+        var x: CGFloat = 145
+        if let rightMostX =  rightMostSubview?.frame.maxX {
+            x = rightMostX - ((rightMostSubview?.frame.size.width ?? 0) * 0.35)
+        }
         let y = (self.frame.height - plateImageSize.height)/2
-        
         let coordinates = CGPoint(x: x, y: y)
         
         

@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TRx-Uu-qZy" customClass="InventoryTableView" customModule="BarbellWeightCalculator" customModuleProvider="target">
-                                <rect key="frame" x="20" y="251" width="374" height="230"/>
+                                <rect key="frame" x="20" y="293" width="374" height="230"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="fX3-38-BMb"/>
@@ -114,22 +114,34 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlf-nx-JJg">
+                                <rect key="frame" x="171.5" y="264" width="71" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="Wle-mg-Jgd"/>
+                                    <constraint firstAttribute="height" constant="21" id="gYe-5w-2UF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TRx-Uu-qZy" secondAttribute="trailing" constant="20" id="0tH-Gr-2TA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PYA-s2-hUg" secondAttribute="trailing" constant="20" id="3WA-Hm-Fqm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EYh-t9-uF2" secondAttribute="trailing" constant="20" id="5a1-Fx-ebY"/>
-                            <constraint firstItem="TRx-Uu-qZy" firstAttribute="top" secondItem="lx7-Q6-uMv" secondAttribute="bottom" constant="8" id="7UJ-WR-MIg"/>
+                            <constraint firstItem="TRx-Uu-qZy" firstAttribute="top" secondItem="lx7-Q6-uMv" secondAttribute="bottom" constant="50" id="7UJ-WR-MIg"/>
                             <constraint firstItem="PYA-s2-hUg" firstAttribute="top" secondItem="LSN-as-MTZ" secondAttribute="bottom" constant="8" id="DTZ-wh-Zlf"/>
                             <constraint firstItem="lx7-Q6-uMv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Pb3-zn-7O3"/>
                             <constraint firstItem="LSN-as-MTZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QKE-kx-Kz5"/>
                             <constraint firstItem="lx7-Q6-uMv" firstAttribute="top" secondItem="PYA-s2-hUg" secondAttribute="bottom" constant="8" id="VNz-Di-boU"/>
                             <constraint firstItem="EYh-t9-uF2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aWN-MQ-abX"/>
+                            <constraint firstItem="TRx-Uu-qZy" firstAttribute="top" secondItem="Rlf-nx-JJg" secondAttribute="bottom" constant="8" id="dfk-ZJ-vqb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lx7-Q6-uMv" secondAttribute="trailing" constant="20" id="kCM-h1-D5d"/>
                             <constraint firstItem="TRx-Uu-qZy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kfF-cM-woU"/>
                             <constraint firstItem="LSN-as-MTZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="r39-4b-iKC"/>
                             <constraint firstItem="PYA-s2-hUg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rUI-yp-kh6"/>
+                            <constraint firstItem="Rlf-nx-JJg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v1d-38-dtr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
