@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate, InventoryDelegate {
-
+class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate, InventoryDelegate, UIGestureRecognizerDelegate {
+    
     @IBOutlet weak var inventoryTableView: InventoryTableView!
     @IBOutlet weak var weightInputField: UITextField!
     @IBOutlet weak var weightedBarbellImageView: WeightedBarbellView!
@@ -48,34 +48,42 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     
     @IBAction func inventoryButtonPushed(_ sender: Any) {
         
-        self.view.layoutIfNeeded()
+        self.toggleInventory()
+    }
+    
+    func toggleInventory() {
         
-        UIView.animate(withDuration: 0.1) {
+        if self.inventoryIsHidden == true {
             
-            if self.inventoryIsHidden == true {
-                
-                self.showInventory()
-            }
-            else {
-                
-                self.hideInventory()
-            }
-            
-            self.view.layoutIfNeeded()
-            self.weightedBarbellImageView.computeFrames()
+            self.showInventory()
         }
-        
-        self.inventoryIsHidden = !self.inventoryIsHidden
+        else {
+            
+            self.hideInventory()
+        }
     }
     
     func hideInventory() {
         
-        self.inventoryTableHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.1) {
+            
+            self.inventoryTableHeightConstraint.constant = 0
+            
+            self.inventoryIsHidden = true
+            self.view.layoutIfNeeded()
+            self.weightedBarbellImageView.computeFrames()
+        }
     }
     
     func showInventory() {
         
-        self.inventoryTableHeightConstraint.constant = self.inventoryTableHeight
+        UIView.animate(withDuration: 0.1) {
+            self.inventoryTableHeightConstraint.constant = self.inventoryTableHeight
+            
+            self.inventoryIsHidden = false
+            self.view.layoutIfNeeded()
+            self.weightedBarbellImageView.computeFrames()
+        }
     }
     
     override func viewDidLoad() {
@@ -105,6 +113,26 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.calculator = Calculator(inventory: inventory)
         self.calculator?.delegate = self
         self.settings = appDelegate()?.settings
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        self.view.addGestureRecognizer(swipeUp)
+        swipeUp.direction = .up
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        self.view.addGestureRecognizer(swipeDown)
+        swipeDown.direction = .down
+    }
+    
+    @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+        
+        if sender.direction == .down {
+            
+            self.hideInventory()
+        }
+        else if sender.direction == .up {
+            
+            self.showInventory()
+        }
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
