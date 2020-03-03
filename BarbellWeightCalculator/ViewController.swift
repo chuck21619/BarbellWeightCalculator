@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
 
     @IBOutlet weak var inventoryTableView: InventoryTableView!
     @IBOutlet weak var weightInputField: UITextField!
-    @IBOutlet weak var weightedBarbellImageView: WeightedBarbellImageView!
+    @IBOutlet weak var weightedBarbellImageView: WeightedBarbellView!
     @IBOutlet weak var platesPrintout: PlatesPrintout!
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var inventoryTableHeightConstraint: NSLayoutConstraint!
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             
             self.view.layoutIfNeeded()
         }
-//        self.view.setNeedsUpdateConstraints()
+        
         self.inventoryIsHidden = !self.inventoryIsHidden
     }
     
