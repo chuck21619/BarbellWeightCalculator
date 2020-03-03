@@ -32,26 +32,9 @@ class Inventory {
         }
     }
     
-    lazy var defaultInventory: [String:String] = {
-       
-        return [
-            "45": "6",
-            "35":"2",
-            "25":"2",
-            "10":"4",
-            "5":"2",
-            "2.5":"2",
-            "1.25":"0",
-            "1":"0",
-            "0.75":"0",
-            "0.5":"0",
-            "0.25":"0"
-        ]
-    }()
-    
     init(with dictionary: [String:String]?) {
         
-        self.dictionary = dictionary ?? defaultInventory
+        self.dictionary = dictionary ?? Constants.Inventory.defaultInventory
         self.buildArray()
     }
     

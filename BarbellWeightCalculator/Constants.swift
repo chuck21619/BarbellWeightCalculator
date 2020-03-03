@@ -11,7 +11,24 @@ import UIKit
 
 class Constants {
     
-    static let dictionaryDefaultsKey = "inventoryDictionary"
+    enum Inventory {
+        
+        static let dictionaryDefaultsKey = "inventoryDictionary"
+        static var defaultInventory: [String:String] = [
+            
+            "45": "6",
+            "35":"2",
+            "25":"2",
+            "10":"4",
+            "5":"2",
+            "2.5":"2",
+            "1.25":"0",
+            "1":"0",
+            "0.75":"0",
+            "0.5":"0",
+            "0.25":"0"
+        ]
+    }
     
     enum BarbellImage {
         

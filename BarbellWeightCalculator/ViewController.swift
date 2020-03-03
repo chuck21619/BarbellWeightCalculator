@@ -126,6 +126,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.inventoryTableHeight = tableHeight
         
         self.view.layoutIfNeeded()
+        self.weightedBarbellImageView.computeFrames()
     }
     
     override func viewDidAppear(_ animated: Bool) {

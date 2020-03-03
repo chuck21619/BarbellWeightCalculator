@@ -15,12 +15,12 @@ class Settings {
     
     init() {
         
-        let inventoryDictionary = self.defaults.value(forKey: Constants.dictionaryDefaultsKey) as? [String:String]
+        let inventoryDictionary = self.defaults.value(forKey: Constants.Inventory.dictionaryDefaultsKey) as? [String:String]
         self.inventory = Inventory(with: inventoryDictionary)
     }
     
     func saveInventoryDictionary(_ dictionary: [String:String]) {
         
-        self.defaults.set(dictionary, forKey: Constants.dictionaryDefaultsKey)
+        self.defaults.set(dictionary, forKey: Constants.Inventory.dictionaryDefaultsKey)
     }
 }
