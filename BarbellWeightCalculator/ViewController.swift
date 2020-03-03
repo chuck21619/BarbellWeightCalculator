@@ -51,17 +51,18 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.1) {
-        if self.inventoryIsHidden == true {
             
-            self.showInventory()
-        }
-        else {
-            
-            self.hideInventory()
-        }
-        
+            if self.inventoryIsHidden == true {
+                
+                self.showInventory()
+            }
+            else {
+                
+                self.hideInventory()
+            }
             
             self.view.layoutIfNeeded()
+            self.weightedBarbellImageView.computeFrames()
         }
         
         self.inventoryIsHidden = !self.inventoryIsHidden

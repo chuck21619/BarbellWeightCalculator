@@ -14,14 +14,11 @@ class WeightedBarbellView: UIView {
     var barbellImageView: UIImageView?
     var numberFormatter: NumberFormatter?
     var delegate: NumberFormatterDelegate?
-    var biggestPlateHeight: CGFloat?
-    var maxPlateHeight: CGFloat = 200
+    var plateImageViews: [UIImageView] = []
     
     override func didMoveToWindow() {
         
         super.didMoveToWindow()
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.biggestPlateHeight = UIImage(named: "45")?.size.height
         self.addBarbell()
     }
     
@@ -37,44 +34,17 @@ class WeightedBarbellView: UIView {
             return
         }
         
-        let barbellImageViewHeight = barbellImageView.frame.size.height
-
-        let y = (self.frame.height - barbellImageViewHeight)/2
-        let barbellCoordinates = CGPoint(x: 0, y: y)
-        
-        barbellImageView.frame.origin = barbellCoordinates
         self.addSubview(barbellImageView)
-        
-        //center vertically
-        barbellImageView.translatesAutoresizingMaskIntoConstraints = false
-        let centerYConstraint = NSLayoutConstraint(item: barbellImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-        self.addConstraint(centerYConstraint)
-        
-        //height
-        let desiredHeightConstraint = NSLayoutConstraint(item: barbellImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.2, constant: 0)
-        desiredHeightConstraint.priority = .defaultHigh
-        self.addConstraint(desiredHeightConstraint)
-        
-        //aspect ratio
-        let aspectRatio = barbellImage.size.width / barbellImage.size.height
-        let aspectRatioConstraint = NSLayoutConstraint(item: barbellImageView, attribute: .width, relatedBy: .equal, toItem: barbellImageView, attribute: .height, multiplier: aspectRatio, constant: 0)
-        barbellImageView.addConstraint(aspectRatioConstraint)
-        
-        //x axis
-        let leadingContrainst = NSLayoutConstraint(item: barbellImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: self.frame.size.width/4.82)
-        self.addConstraint(leadingContrainst)
     }
     
     func clearPlates() {
         
-        for subview in self.subviews {
+        for plateImageView in self.plateImageViews {
             
-            guard subview !== self.barbellImageView else {
-                continue
-            }
-            
-            subview.removeFromSuperview()
+            plateImageView.removeFromSuperview()
         }
+        
+        self.plateImageViews = []
     }
     
     func setPlates(_ plates: [Float]) {
@@ -95,45 +65,10 @@ class WeightedBarbellView: UIView {
             
             let plateImageView = UIImageView(image: plateImage)
             self.addSubview(plateImageView)
-            
-            plateImageView.translatesAutoresizingMaskIntoConstraints = false
-            
-            self.layoutIfNeeded()
-            
-            //width
-            let aspectRatio = plateImage.size.width / plateImage.size.height
-            let aspectRatioConstraint = NSLayoutConstraint(item: plateImageView, attribute: .width, relatedBy: .equal, toItem: plateImageView, attribute: .height, multiplier: aspectRatio, constant: 0)
-            plateImageView.addConstraint(aspectRatioConstraint)
-            
-            //vertical
-            let centerYConstraint = NSLayoutConstraint(item: plateImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-            self.addConstraint(centerYConstraint)
-            
-            //horizontal
-            let xConstraint = nextXPlateConstraint(plateImageView: plateImageView)
-            self.addConstraint(xConstraint)
-            
-            //height
-            let heightRatio = plateImage.size.height / (self.biggestPlateHeight ?? maxPlateHeight)
-            let desiredHeightIfLargestPlate = NSLayoutConstraint(item: plateImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: heightRatio, constant: 0)
-            desiredHeightIfLargestPlate.priority = .defaultHigh
-            self.addConstraint(desiredHeightIfLargestPlate)
-        }
-    }
-    
-    func nextXPlateConstraint(plateImageView: UIImageView) -> NSLayoutConstraint {
-
-        if let rightMostPlateView = self.rightMostPlateView(), plateImageView != rightMostPlateView {
-            
-            let xConstraint = NSLayoutConstraint(item: plateImageView, attribute: .leading, relatedBy: .equal, toItem: rightMostPlateView, attribute: .trailing, multiplier: 1, constant: 0)
-            return xConstraint
-        }
-        else {
-
-            let xConstraint = NSLayoutConstraint(item: plateImageView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: self.frame.size.width/3)
-            return xConstraint
+            self.plateImageViews.append(plateImageView)
         }
         
+        self.computeFrames()
     }
     
     func rightMostPlateView() -> UIView? {
@@ -152,5 +87,50 @@ class WeightedBarbellView: UIView {
         }
         
         return rightMostSubview
+    }
+    
+    func computeFrames() {
+        
+        guard let barbellImageView = self.barbellImageView else {
+            return
+        }
+        
+        let height = (self.frame.size.height * Constants.BarbellImage.barbellSleeveToPlateImageRatio)
+        let width = (barbellImageView.frame.size.width/barbellImageView.frame.size.height) * height
+        let distanceToSleeveCenter = width * Constants.BarbellImage.ratioToCenterOfBarbellSleeve
+        let xCoordinate: CGFloat = (self.frame.size.width/2) - distanceToSleeveCenter
+        let yCoordinate = (self.frame.size.height/2) - (height/2)
+        barbellImageView.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
+        
+        for plateImageView in self.plateImageViews {
+
+            guard let plateImageSize = plateImageView.image?.size.height,
+                  let biggestPlateImageSize = Constants.BarbellImage.biggestPlateImageSize?.height else {
+                return
+            }
+            
+            let ratioToBiggestPlate = plateImageSize / biggestPlateImageSize
+            let height = self.frame.size.height * ratioToBiggestPlate
+            let width = (plateImageView.frame.size.width/plateImageView.frame.size.height) * height
+            let yCoordinate = (self.frame.size.height/2) - (height/2)
+            var xCoordinate: CGFloat = 0
+            
+            if plateImageView == self.plateImageViews.first {
+                
+                xCoordinate = barbellImageView.frame.origin.x + (barbellImageView.frame.size.width * Constants.BarbellImage.ratioToEdgeOfBarbellSleeve)
+                
+            }
+            else {
+                
+                guard let currentIndex = self.plateImageViews.firstIndex(of: plateImageView) else {
+                    return
+                }
+                
+                let previousPlateImageView = self.plateImageViews[currentIndex - 1]
+                xCoordinate = previousPlateImageView.frame.origin.x + (previousPlateImageView.frame.size.width * Constants.BarbellImage.plateOverlapRatio)
+            }
+
+            plateImageView.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
+        }
     }
 }
