@@ -13,6 +13,11 @@ class PlatesPrintout: UILabel {
     
     var delegate: NumberFormatterDelegate?
     
+    override func didMoveToWindow() {
+        
+        self.adjustsFontSizeToFitWidth = true
+    }
+    
     func setPlates(_ plates: [Float]) {
         
         guard let numberFormatter = self.delegate?.numberFormatter else {
@@ -25,8 +30,9 @@ class PlatesPrintout: UILabel {
             
             let formattedPlateWeight = numberFormatter.string(from: plate as NSNumber) ?? ""
             plateString.append(formattedPlateWeight)
-            plateString.append("  ")
+            plateString.append(Constants.PlatesPrintout.separator)
         }
+        plateString = String(plateString.dropLast(Constants.PlatesPrintout.separator.count))
         
         self.text = plateString
     }

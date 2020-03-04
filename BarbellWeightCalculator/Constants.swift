@@ -30,12 +30,17 @@ class Constants {
         ]
     }
     
+    enum PlatesPrintout {
+        
+        static let separator = ",  "
+    }
+    
     enum BarbellImage {
         
-        static let ratioToCenterOfBarbellSleeve: CGFloat = 0.817
-        static let ratioToEdgeOfBarbellSleeve: CGFloat = 0.671
+        static let ratioToCenterOfBarbellSleeve: CGFloat = 0.88
+        static let ratioToEdgeOfBarbellSleeve: CGFloat = 0.79
         static let barbellSleeveToPlateImageRatio: CGFloat = 0.2
         static let biggestPlateImageSize = UIImage(named: "45")?.size
-        static let plateOverlapRatio: CGFloat = 0.7
+        static let plateOverlapRatio: CGFloat = 1
     }
 }

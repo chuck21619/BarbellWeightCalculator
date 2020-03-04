@@ -189,7 +189,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgS-Du-S89">
-                                <rect key="frame" x="175" y="713" width="64" height="30"/>
+                                <rect key="frame" x="20" y="713" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Pg0-wB-vQK"/>
                                 </constraints>
@@ -202,7 +202,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TRx-Uu-qZy" secondAttribute="trailing" constant="20" id="0tH-Gr-2TA"/>
@@ -222,6 +222,7 @@
                             <constraint firstItem="lx7-Q6-uMv" firstAttribute="top" secondItem="PYA-s2-hUg" secondAttribute="bottom" constant="8" id="VNz-Di-boU"/>
                             <constraint firstItem="Rd5-om-slb" firstAttribute="centerY" secondItem="LSN-as-MTZ" secondAttribute="centerY" id="Vi6-NX-04X"/>
                             <constraint firstItem="Rd5-om-slb" firstAttribute="leading" secondItem="AV0-aV-xHy" secondAttribute="trailing" constant="8" id="XQc-Q6-w1J"/>
+                            <constraint firstItem="EgS-Du-S89" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cCD-rx-vKv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TA6-4e-scc" secondAttribute="trailing" constant="20" id="fPn-2H-HNP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lx7-Q6-uMv" secondAttribute="trailing" constant="20" id="kCM-h1-D5d"/>
                             <constraint firstItem="TRx-Uu-qZy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kfF-cM-woU"/>
