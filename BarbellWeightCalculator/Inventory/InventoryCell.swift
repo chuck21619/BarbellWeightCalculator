@@ -25,6 +25,7 @@ class InventoryCell: UITableViewCell {
         
         let numberOfPlates = Int(self.stepper.value)
         self.numberOfPlates.text = "\(numberOfPlates)"
-        self.delegate?.set(numberOfPlates: numberOfPlates,for: plateWeight)
+        
+        self.delegate?.set(numberOfPlates: numberOfPlates, for: plateWeight)
     }
 }

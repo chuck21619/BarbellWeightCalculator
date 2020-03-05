@@ -11,4 +11,5 @@ import Foundation
 protocol InventoryTableViewDelegate: NumberFormatterDelegate, InventoryCellDelegate {
     
     func getInventory() -> Inventory?
+    func selectedUnit() -> Constants.Inventory.Unit?
 }

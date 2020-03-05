@@ -10,5 +10,6 @@ import Foundation
 
 protocol InventoryDelegate {
     
-    func didChangeInventory()
+    func didChangeInventory(for: Constants.Inventory.Unit)
+    func selectedUnit() -> Constants.Inventory.Unit?
 }

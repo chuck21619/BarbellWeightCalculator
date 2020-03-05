@@ -12,15 +12,27 @@ import UIKit
 class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var inventoryDelegate: InventoryTableViewDelegate?
+    
+    func loadInventory(for unit: Constants.Inventory.Unit) {
+        
+        self.orderedInventoryPlates = plateValues()
+        self.reloadData()
+    }
+    
     lazy var orderedInventoryPlates: [String] = {
         
-        var  tmporderedInventoryPlates = self.inventoryDelegate?.getInventory()?.dictionary.keys.sorted() { (firstValue, secondValue) in
-
-            return Float(firstValue) ?? 0 > Float(secondValue) ?? 0
-            } ?? []
-
-        return tmporderedInventoryPlates
+        return self.plateValues()
     }()
+    
+    func plateValues() -> [String] {
+    
+        guard let inventory = self.inventoryDelegate?.getInventory(),
+              let selectedUnit = self.inventoryDelegate?.selectedUnit() else {
+                return []
+        }
+        
+        return inventory.orderedPlateValues(for: selectedUnit)
+    }
     
     //MARK: - Tableview datasource and delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,10 +59,18 @@ class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
             return cell
         }
         
+        guard let selectedUnit = self.inventoryDelegate?.selectedUnit() else {
+            return cell
+        }
+        
+        guard let unitInventory = inventory.dictionary[selectedUnit.rawValue] else {
+            return cell
+        }
+        
         cell.delegate = self.inventoryDelegate
         
         let weight = self.orderedInventoryPlates[indexPath.row]
-        let numberOfPlates = Int(inventory.dictionary[weight] ?? "0") ?? 0
+        let numberOfPlates = unitInventory[weight] ?? 0
         
         cell.stepper.value = Double(numberOfPlates)
         cell.plateWeight.text = weight

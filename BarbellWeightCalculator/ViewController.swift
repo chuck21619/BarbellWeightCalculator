@@ -20,6 +20,8 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var percentageSlider: UISlider!
     @IBOutlet weak var adjustedLabel: UILabel!
+    @IBOutlet weak var unitButton: UnitButton!
+    @IBOutlet weak var unitAbbreviatedLabel: UnitAbbreviatedLabel!
     
     var numberFormatter: NumberFormatter?
     var calculator: Calculator?
@@ -121,6 +123,13 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         self.view.addGestureRecognizer(swipeDown)
         swipeDown.direction = .down
+        
+        if let selectedUnit = self.selectedUnit() {
+            
+            self.unitButton.setTitleLabel(to: selectedUnit)
+            self.unitAbbreviatedLabel.unitAbbreviationDelegate = inventory
+            self.unitAbbreviatedLabel.setWeightAbbreviation(for: selectedUnit)
+        }
     }
     
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
@@ -170,14 +179,58 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             return
         }
         
+        guard let selectedUnit = self.selectedUnit() else {
+            return
+        }
+        
         let sliderValue = self.percentageSlider.value
         let roundedSliderValue = 5 * Int((sliderValue / 5.0).rounded())
-        guard let plates = self.calculator?.calculate(weight, atPercent: Float(roundedSliderValue)) else {
+        guard let plates = self.calculator?.calculate(weight, atPercent: Float(roundedSliderValue), unit: selectedUnit) else {
             return
         }
 
         self.weightedBarbellImageView.setPlates(plates)
         self.platesPrintout.setPlates(plates)
+    }
+    
+    @IBAction func unitButtonAction(_ sender: Any) {
+        
+        guard let unitButton = sender as? UnitButton else {
+            return
+        }
+        
+        guard let currentUnit = self.selectedUnit() else {
+            return
+        }
+        
+        let sortedUnits = Constants.Inventory.Unit.allCases.sorted { (firstUnit, secondUnit) -> Bool in
+            firstUnit.rawValue > secondUnit.rawValue
+        }
+        
+        guard var nextUnit = sortedUnits.first else {
+        
+            return
+        }
+        
+        var unitPassed = false
+        for unit in sortedUnits {
+            
+            if unitPassed == true {
+                
+                nextUnit = unit
+                break
+            }
+            else if unit == currentUnit {
+                
+                unitPassed = true
+            }
+        }
+        
+        self.settings?.setSelectedUnit(nextUnit)
+        unitButton.setTitleLabel(to: nextUnit)
+        self.inventoryTableView.loadInventory(for: nextUnit)
+        self.unitAbbreviatedLabel.setWeightAbbreviation(for: nextUnit)
+        self.updateWeights()
     }
     
     //MARK: - CalculatorDelegate
@@ -242,7 +295,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     }
     
     //MARK: - InventoryDelegate
-    func didChangeInventory() {
+    func didChangeInventory(for: Constants.Inventory.Unit) {
         
         updateWeights()
         
@@ -259,9 +312,19 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         return self.settings?.inventory
     }
     
+    func selectedUnit() -> Constants.Inventory.Unit? {
+        
+        return self.settings?.selectedUnit
+    }
+    
     //MARK: - InventoryCellDelegate
     func set(numberOfPlates: Int, for weightValue: String) {
     
-        self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weightValue)
+        guard let selectedUnit = self.settings?.selectedUnit else {
+        
+            return
+        }
+        
+        self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weightValue, in: selectedUnit)
     }
 }
