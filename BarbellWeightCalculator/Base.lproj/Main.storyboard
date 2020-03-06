@@ -83,7 +83,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="lb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABn-bJ-WPD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="lb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABn-bJ-WPD" customClass="UnitAbbreviatedLabel" customModule="BarbellWeightCalculator" customModuleProvider="target">
                                                     <rect key="frame" x="118" y="11.5" width="14" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="e3g-aQ-ZEU"/>
@@ -132,6 +132,7 @@
                                             <outlet property="numberOfPlates" destination="mkG-j4-5n7" id="H2K-dw-b5Z"/>
                                             <outlet property="plateWeight" destination="y8z-UY-mB0" id="PEy-aZ-ckf"/>
                                             <outlet property="stepper" destination="iCg-Bc-tC4" id="d25-GN-6vm"/>
+                                            <outlet property="unitAbbreviatedLabel" destination="ABn-bJ-WPD" id="46m-JN-s0d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

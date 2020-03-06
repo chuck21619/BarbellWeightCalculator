@@ -346,6 +346,16 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weight, in: selectedUnit)
     }
     
+    func weightAbbreviation(for unit: Constants.Inventory.Unit) -> String {
+        
+        guard let inventory = self.getInventory() else {
+        
+            return ""
+        }
+        
+        return inventory.weightAbbreviation(for: unit)
+    }
+    
     //MARK: - WeightedBarbellImageViewDelegate
     func biggestPlateImageSize() -> CGSize {
         

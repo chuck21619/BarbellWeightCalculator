@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol InventoryCellDelegate {
+protocol InventoryCellDelegate: UnitAbbreviationDelegate {
     
     func set(numberOfPlates: Int, for weight: Float)
 }

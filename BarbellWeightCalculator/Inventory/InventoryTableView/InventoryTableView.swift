@@ -77,6 +77,8 @@ class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
         
         let numberOfPlates = plateData.numberOfPlates
         
+        cell.unitAbbreviatedLabel.unitAbbreviationDelegate = self.inventoryDelegate
+        cell.unitAbbreviatedLabel.setWeightAbbreviation(for: selectedUnit)
         cell.stepper.value = Double(numberOfPlates)
         cell.plateWeight.text = self.inventoryDelegate?.numberFormatter?.string(from: weight as NSNumber) ?? ""
         cell.numberOfPlates.text = "\(numberOfPlates)"

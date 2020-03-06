@@ -13,6 +13,7 @@ class InventoryCell: UITableViewCell {
     
     var delegate: InventoryCellDelegate?
     
+    @IBOutlet weak var unitAbbreviatedLabel: UnitAbbreviatedLabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var plateWeight: UILabel!
     @IBOutlet weak var numberOfPlates: UILabel!
