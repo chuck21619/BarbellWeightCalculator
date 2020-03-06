@@ -16,7 +16,18 @@ class Settings {
     
     init() {
         
-        let inventoryDictionary = self.defaults.value(forKey: Constants.Inventory.dictionaryDefaultsKey) as? [String:[String:Int]]
+        var inventoryDictionary: [String:[PlateData]]
+        
+        if let inventoryDictionaryData = self.defaults.data(forKey: Constants.Inventory.dictionaryDefaultsKey),
+           let savedInventoryDictionary = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(inventoryDictionaryData) as? [String:[PlateData]] {
+        
+            inventoryDictionary = savedInventoryDictionary
+        }
+        else {
+        
+            inventoryDictionary = Constants.Inventory.defaultInventory
+        }
+        
         let savedSelectedUnitString = self.defaults.value(forKey: Constants.Inventory.selectedUnitDefaultsKey) as? String ?? ""
         let savedSelectedUnit = Constants.Inventory.Unit(rawValue: savedSelectedUnitString)
         
@@ -24,9 +35,14 @@ class Settings {
         self.inventory = Inventory(with: inventoryDictionary)
     }
     
-    func saveInventoryDictionary(_ dictionary: [String:[String:Int]]) {
+    func saveInventoryDictionary(_ dictionary: [String:[PlateData]]) {
         
-        self.defaults.set(dictionary, forKey: Constants.Inventory.dictionaryDefaultsKey)
+        guard let encodedDictionary = try? NSKeyedArchiver.archivedData(withRootObject: dictionary, requiringSecureCoding: false) else {
+        
+            return
+        }
+        
+        self.defaults.set(encodedDictionary, forKey: Constants.Inventory.dictionaryDefaultsKey)
     }
     
     func setSelectedUnit(_ unit: Constants.Inventory.Unit) {

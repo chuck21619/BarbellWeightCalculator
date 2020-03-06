@@ -318,13 +318,13 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
     }
     
     //MARK: - InventoryCellDelegate
-    func set(numberOfPlates: Int, for weightValue: String) {
+    func set(numberOfPlates: Int, for weight: Float) {
     
         guard let selectedUnit = self.settings?.selectedUnit else {
         
             return
         }
         
-        self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weightValue, in: selectedUnit)
+        self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weight, in: selectedUnit)
     }
 }

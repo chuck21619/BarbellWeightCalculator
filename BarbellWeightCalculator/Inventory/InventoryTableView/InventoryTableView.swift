@@ -19,12 +19,12 @@ class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
         self.reloadData()
     }
     
-    lazy var orderedInventoryPlates: [String] = {
+    lazy var orderedInventoryPlates: [Float] = {
         
         return self.plateValues()
     }()
     
-    func plateValues() -> [String] {
+    func plateValues() -> [Float] {
     
         guard let inventory = self.inventoryDelegate?.getInventory(),
               let selectedUnit = self.inventoryDelegate?.selectedUnit() else {
@@ -67,13 +67,21 @@ class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
             return cell
         }
         
+        let weight = self.orderedInventoryPlates[indexPath.row]
+        
+        guard let plateData = unitInventory.first(where: { (plateData) -> Bool in
+            plateData.weight == weight
+        }) else {
+        
+            return cell
+        }
+        
         cell.delegate = self.inventoryDelegate
         
-        let weight = self.orderedInventoryPlates[indexPath.row]
-        let numberOfPlates = unitInventory[weight] ?? 0
+        let numberOfPlates = plateData.numberOfPlates
         
         cell.stepper.value = Double(numberOfPlates)
-        cell.plateWeight.text = weight
+        cell.plateWeight.text = self.inventoryDelegate?.numberFormatter?.string(from: weight as NSNumber) ?? ""
         cell.numberOfPlates.text = "\(numberOfPlates)"
         
         return cell

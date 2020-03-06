@@ -17,6 +17,7 @@ class Constants {
         static let selectedUnitDefaultsKey = "selectedUnit"
         static let barbellWeightDefaultsKey = "barbellWeight"
         
+        static let defaultPlateSize: CGSize = CGSize(width: 10, height: 100)
         static let defaultBarbellWeight: Float = 45
         static let defaultUnit = Constants.Inventory.Unit.pounds
         
@@ -26,40 +27,42 @@ class Constants {
             case kilograms = "kilograms"
         }
         
-        static var defaultInventory: [String:[String:Int]] = [
-            
-            Constants.Inventory.Unit.pounds.rawValue:[
-                "100": 0,
-                "50": 0,
-                "45": 6,
-                "35": 2,
-                "25": 2,
-                "20": 0,
-                "12.5": 0,
-                "10": 4,
-                "7.5": 0,
-                "5": 2,
-                "2.5": 2,
-                "1.25": 0,
-                "1": 0,
-                "0.75": 0,
-                "0.5": 0,
-                "0.25": 0
+        static let defaultInventory: [String:[PlateData]] = [
+
+            Unit.pounds.rawValue:[
+                
+                    PlateData(weight: 100, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 50, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 45, size: CGSize(width: 10, height: 100), numberOfPlates: 10),
+                    PlateData(weight: 35, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                    PlateData(weight: 25, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                    PlateData(weight: 20, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 12.5, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 10, size: CGSize(width: 10, height: 100), numberOfPlates: 4),
+                    PlateData(weight: 7.5, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 5, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                    PlateData(weight: 2.5, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                    PlateData(weight: 1.25, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 1, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 0.75, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 0.5, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                    PlateData(weight: 0.25, size: CGSize(width: 10, height: 100), numberOfPlates: 0)
             ],
-            Constants.Inventory.Unit.kilograms.rawValue:[
-                "50": 0,
-                "25": 6,
-                "20": 2,
-                "15": 2,
-                "10": 2,
-                "5": 2,
-                "2.5": 2,
-                "1.25": 2,
-                "1": 0,
-                "0.75": 0,
-                "0.5": 0,
-                "0.25": 0
-            ]
+            Unit.kilograms.rawValue:[
+
+                PlateData(weight: 50, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                PlateData(weight: 25, size: CGSize(width: 10, height: 100), numberOfPlates: 10),
+                PlateData(weight: 20, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 15, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 10, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 5, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 2.5, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 1.25, size: CGSize(width: 10, height: 100), numberOfPlates: 2),
+                PlateData(weight: 1, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                PlateData(weight: 0.75, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                PlateData(weight: 0.5, size: CGSize(width: 10, height: 100), numberOfPlates: 0),
+                PlateData(weight: 0.25, size: CGSize(width: 10, height: 100), numberOfPlates: 0)
+            ],
         ]
     }
     

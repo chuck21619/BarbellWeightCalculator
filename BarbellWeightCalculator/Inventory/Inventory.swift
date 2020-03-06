@@ -13,7 +13,7 @@ class Inventory: UnitAbbreviationDelegate {
     
     var delegate: InventoryDelegate?
     
-    var dictionary: [String:[String:Int]] = [:]
+    var dictionary: [String:[PlateData]] = [:]
     
     var plateArrays: [Constants.Inventory.Unit:[Float]] = [:]
     
@@ -25,7 +25,7 @@ class Inventory: UnitAbbreviationDelegate {
         }
     }
     
-    init(with dictionary: [String:[String:Int]]?) {
+    init(with dictionary: [String:[PlateData]]?) {
         
         self.barbellWeight = UserDefaults.standard.value(forKey: Constants.Inventory.barbellWeightDefaultsKey) as? Float ?? Constants.Inventory.defaultBarbellWeight
         
@@ -37,23 +37,34 @@ class Inventory: UnitAbbreviationDelegate {
         }
     }
     
-    func set(numberOfPlates: Int, for weightValue: String, in unit: Constants.Inventory.Unit) {
+    func set(numberOfPlates: Int, for weight: Float, in unit: Constants.Inventory.Unit) {
         
-        self.dictionary[unit.rawValue]?[weightValue] = numberOfPlates
+        guard let plateData = self.dictionary[unit.rawValue]?.first(where: { (plateData) -> Bool in
+            plateData.weight == weight
+        }) else {
+            return
+        }
+        
+        plateData.numberOfPlates = numberOfPlates
+        
         self.buildArray(for: unit)
         self.delegate?.didChangeInventory(for: unit)
     }
     
-    func orderedPlateValues(for unit: Constants.Inventory.Unit) -> [String] {
+    func orderedPlateValues(for unit: Constants.Inventory.Unit) -> [Float] {
         
-        guard let unitDictionary = self.dictionary[unit.rawValue] else {
-            
+        guard let plateDatas = self.dictionary[unit.rawValue] else {
+        
             return []
         }
         
-        let  orderedPlateValues = unitDictionary.keys.sorted() { (firstValue, secondValue) in
+        let plateValues = plateDatas.map { (plateData) -> Float in
+            return plateData.weight
+        }
+        
+        let  orderedPlateValues = plateValues.sorted() { (firstValue, secondValue) in
             
-            return Float(firstValue) ?? 0 > Float(secondValue) ?? 0
+            return firstValue > secondValue
         }
         
         return orderedPlateValues
@@ -61,21 +72,18 @@ class Inventory: UnitAbbreviationDelegate {
     
     func buildArray(for unit: Constants.Inventory.Unit) {
         
-        guard let unitInventory = self.dictionary[unit.rawValue] else {
+        guard let plateDatas = self.dictionary[unit.rawValue] else {
             
             return
         }
         
         var plates: [Float] = []
         
-        for (weight, numberOfPlates) in unitInventory {
+        for plateData in plateDatas {
             
-            for _ in 0..<numberOfPlates/2 {
-                
-                guard let weightFloat = Float(weight) else {
-                    continue
-                }
-                plates.append(weightFloat)
+            for _ in 0..<plateData.numberOfPlates/2 {
+            
+                plates.append(plateData.weight)
             }
         }
         

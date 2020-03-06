@@ -10,5 +10,5 @@ import Foundation
 
 protocol InventoryCellDelegate {
     
-    func set(numberOfPlates: Int, for weightValue: String)
+    func set(numberOfPlates: Int, for weight: Float)
 }

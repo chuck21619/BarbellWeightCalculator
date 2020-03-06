@@ -30,6 +30,7 @@
 		A355C0982408F34E0076952F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355C0972408F34E0076952F /* Calculator.swift */; };
 		A39EE392240994F5000AB3F7 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EE391240994F5000AB3F7 /* Inventory.swift */; };
 		A3F7386A2409DC76000FE6D0 /* WeightedBarbellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F738692409DC76000FE6D0 /* WeightedBarbellView.swift */; };
+		A3FB9D20241207E50024F1F7 /* PlateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB9D1F241207E50024F1F7 /* PlateData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		A355C0972408F34E0076952F /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		A39EE391240994F5000AB3F7 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		A3F738692409DC76000FE6D0 /* WeightedBarbellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedBarbellView.swift; sourceTree = "<group>"; };
+		A3FB9D1F241207E50024F1F7 /* PlateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				A324F3D22408CCEC00D32640 /* ViewController.swift */,
 				A328F190240B67B500803EF1 /* Settings.swift */,
 				A328F192240B6B2000803EF1 /* Constants.swift */,
+				A3FB9D1F241207E50024F1F7 /* PlateData.swift */,
 				A324F3D42408CCEC00D32640 /* Main.storyboard */,
 				A315694B24106C1E004EA7D6 /* UnitButton.swift */,
 				A3184D4B24108FE400583637 /* Unit Abbreviated Label */,
@@ -282,6 +285,7 @@
 			files = (
 				A315694C24106C1E004EA7D6 /* UnitButton.swift in Sources */,
 				A328F184240AF7D200803EF1 /* NumberFormatterDelegate.swift in Sources */,
+				A3FB9D20241207E50024F1F7 /* PlateData.swift in Sources */,
 				A328F180240A69D900803EF1 /* InventoryCellDelegate.swift in Sources */,
 				A328F18C240B087100803EF1 /* InventoryTableViewDelegate.swift in Sources */,
 				A324F3D32408CCEC00D32640 /* ViewController.swift in Sources */,

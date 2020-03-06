@@ -19,13 +19,14 @@ class InventoryCell: UITableViewCell {
     
     @IBAction func stepperChanged(_ sender: Any) {
         
-        guard let plateWeight = plateWeight.text else {
+        guard let weightString = plateWeight.text,
+              let weight = Float(weightString) else {
             return
         }
         
         let numberOfPlates = Int(self.stepper.value)
         self.numberOfPlates.text = "\(numberOfPlates)"
         
-        self.delegate?.set(numberOfPlates: numberOfPlates, for: plateWeight)
+        self.delegate?.set(numberOfPlates: numberOfPlates, for: weight)
     }
 }
