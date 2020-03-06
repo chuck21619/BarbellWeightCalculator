@@ -58,18 +58,18 @@ class Constants {
             ],
             Unit.kilograms.rawValue:[
                 
-                50: PlateData(size: CGSize(width: 1, height: 1), numberOfPlates: 0),
-//                25: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 10),
-//                20: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                15: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                10: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                5: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                2.5: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                1.25: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 2),
-//                1: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 0),
-//                0.75: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 0),
-//                0.5: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 0),
-//                0.25: PlateData(size: CGSize(width: 10, height: 100), numberOfPlates: 0)
+                50: PlateData(size: CGSize(width: 2, height: 17.7), numberOfPlates: 0),
+                25: PlateData(size: CGSize(width: 1.57, height: 17.7), numberOfPlates: 10),
+                20: PlateData(size: CGSize(width: 1.46, height: 17.7), numberOfPlates: 2),
+                15: PlateData(size: CGSize(width: 1.22, height: 15.35), numberOfPlates: 2),
+                10: PlateData(size: CGSize(width: 1.18, height: 12.6), numberOfPlates: 2),
+                5: PlateData(size: CGSize(width: 1.1, height: 10), numberOfPlates: 2),
+                2.5: PlateData(size: CGSize(width: 0.9, height: 7.9), numberOfPlates: 2),
+                1.25: PlateData(size: CGSize(width: 0.59, height: 6.5), numberOfPlates: 2),
+                1: PlateData(size: CGSize(width: 0.5, height: 5), numberOfPlates: 0),
+                0.75: PlateData(size: CGSize(width: 0.4, height: 4), numberOfPlates: 0),
+                0.5: PlateData(size: CGSize(width: 0.4, height: 4), numberOfPlates: 0),
+                0.25: PlateData(size: CGSize(width: 0.4, height: 4), numberOfPlates: 0)
             ]
         ]
     }
