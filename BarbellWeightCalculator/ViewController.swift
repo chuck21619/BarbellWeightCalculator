@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate, InventoryDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDelegate, InventoryTableViewDelegate, CalculatorDelegate, InventoryDelegate, UIGestureRecognizerDelegate, WeightedBarbellViewDelegate {
     
     @IBOutlet weak var inventoryTableView: InventoryTableView!
     @IBOutlet weak var weightInputField: UITextField!
@@ -185,12 +185,30 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         
         let sliderValue = self.percentageSlider.value
         let roundedSliderValue = 5 * Int((sliderValue / 5.0).rounded())
-        guard let plates = self.calculator?.calculate(weight, atPercent: Float(roundedSliderValue), unit: selectedUnit) else {
+        guard let weights = self.calculator?.calculate(weight, atPercent: Float(roundedSliderValue), unit: selectedUnit) else {
             return
         }
+        
+        self.platesPrintout.setWeights(weights)
 
-        self.weightedBarbellImageView.setPlates(plates)
-        self.platesPrintout.setPlates(plates)
+        var sizes: [CGSize] = []
+        
+        guard let inventoryDictionary = self.getInventory()?.dictionary,
+              let unitDictionary = inventoryDictionary[selectedUnit.rawValue] else {
+        
+            return
+        }
+        
+        for weight in weights {
+            
+            guard let plateData = unitDictionary[weight] else {
+                continue
+            }
+            
+            sizes.append(plateData.size)
+        }
+        
+        self.weightedBarbellImageView.setPlates(sizes)
     }
     
     @IBAction func unitButtonAction(_ sender: Any) {
@@ -284,7 +302,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
             self.percentageLabel.text = "100%"
             self.weightedBarbellImageView.setPlates([])
             self.weightInputField.text = ""
-            self.platesPrintout.setPlates([])
+            self.platesPrintout.setWeights([])
             self.offsetLabel.text = ""
             self.adjustedLabel.text = ""
         }
@@ -326,5 +344,32 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         }
         
         self.settings?.inventory?.set(numberOfPlates: numberOfPlates, for: weight, in: selectedUnit)
+    }
+    
+    //MARK: - WeightedBarbellImageViewDelegate
+    func biggestPlateImageSize() -> CGSize {
+        
+        guard let inventoryDictionary = self.settings?.inventory?.dictionary else {
+            return .zero
+        }
+        
+        var biggestPlateImageSize: CGSize = .zero
+        
+        for unit in inventoryDictionary.keys {
+            
+            guard let unitDictionary = inventoryDictionary[unit] else {
+                continue
+            }
+            
+            for plateData in unitDictionary.values {
+                
+                if plateData.size.height > biggestPlateImageSize.height {
+                    
+                    biggestPlateImageSize = plateData.size
+                }
+            }
+        }
+        
+        return biggestPlateImageSize
     }
 }

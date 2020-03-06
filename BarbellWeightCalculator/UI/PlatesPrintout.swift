@@ -18,7 +18,7 @@ class PlatesPrintout: UILabel {
         self.adjustsFontSizeToFitWidth = true
     }
     
-    func setPlates(_ plates: [Float]) {
+    func setWeights(_ plates: [Float]) {
         
         guard let numberFormatter = self.delegate?.numberFormatter else {
             return

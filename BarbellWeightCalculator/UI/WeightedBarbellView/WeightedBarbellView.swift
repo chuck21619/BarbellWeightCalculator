@@ -13,8 +13,12 @@ class WeightedBarbellView: UIView {
     
     var barbellImageView: UIImageView?
     var numberFormatter: NumberFormatter?
-    var delegate: NumberFormatterDelegate?
-    var plateImageViews: [UIImageView] = []
+    var plateImageViews: [(imageView: UIImageView, plateSize: CGSize)] = []
+    var delegate: WeightedBarbellViewDelegate?
+    lazy var biggestPlateImageSize: CGSize = {
+        
+        return self.delegate?.biggestPlateImageSize() ?? .zero
+    }()
     
     override func didMoveToWindow() {
         
@@ -24,7 +28,7 @@ class WeightedBarbellView: UIView {
     
     func addBarbell() {
         
-        guard let barbellImage = UIImage(named: "barbell") else {
+        guard let barbellImage = UIImage(named: Constants.BarbellImage.barbellImageName) else {
             return
         }
         
@@ -41,31 +45,25 @@ class WeightedBarbellView: UIView {
         
         for plateImageView in self.plateImageViews {
             
-            plateImageView.removeFromSuperview()
+            plateImageView.imageView.removeFromSuperview()
         }
         
         self.plateImageViews = []
     }
     
-    func setPlates(_ plates: [Float]) {
+    func setPlates(_ sizes: [CGSize]) {
         
         self.clearPlates()
         
-        guard let numberFormatter = self.delegate?.numberFormatter else {
+        guard let plateImage = UIImage(named: Constants.BarbellImage.barbellPlateImageName) else {
             return
         }
         
-        for plate in plates {
-            
-            guard let plateImageName = numberFormatter.string(from: plate as NSNumber),
-                  let plateImage = UIImage(named: plateImageName) else {
-                
-                return
-            }
+        for size in sizes {
             
             let plateImageView = UIImageView(image: plateImage)
             self.addSubview(plateImageView)
-            self.plateImageViews.append(plateImageView)
+            self.plateImageViews.append((imageView: plateImageView, plateSize: size))
         }
         
         self.computeFrames()
@@ -103,34 +101,32 @@ class WeightedBarbellView: UIView {
         barbellImageView.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
         
         for plateImageView in self.plateImageViews {
-
-            guard let plateImageSize = plateImageView.image?.size.height,
-                  let biggestPlateImageSize = Constants.BarbellImage.biggestPlateImageSize?.height else {
-                return
-            }
             
-            let ratioToBiggestPlate = plateImageSize / biggestPlateImageSize
+            let ratioToBiggestPlate = plateImageView.plateSize.height / biggestPlateImageSize.height
             let height = self.frame.size.height * ratioToBiggestPlate
-            let width = (plateImageView.frame.size.width/plateImageView.frame.size.height) * height
+            let width = (plateImageView.plateSize.width/plateImageView.plateSize.height) * height
             let yCoordinate = (self.frame.size.height/2) - (height/2)
             var xCoordinate: CGFloat = 0
             
-            if plateImageView == self.plateImageViews.first {
+            if plateImageView.imageView == self.plateImageViews.first?.imageView {
                 
                 xCoordinate = barbellImageView.frame.origin.x + (barbellImageView.frame.size.width * Constants.BarbellImage.ratioToEdgeOfBarbellSleeve)
                 
             }
             else {
                 
-                guard let currentIndex = self.plateImageViews.firstIndex(of: plateImageView) else {
-                    return
+                guard let currentIndex = self.plateImageViews.firstIndex(where: { (iteratedPlateImageView) -> Bool in
+                    
+                    plateImageView.imageView == iteratedPlateImageView.imageView
+                }) else {
+                    continue
                 }
                 
                 let previousPlateImageView = self.plateImageViews[currentIndex - 1]
-                xCoordinate = previousPlateImageView.frame.origin.x + (previousPlateImageView.frame.size.width * Constants.BarbellImage.plateOverlapRatio)
+                xCoordinate = previousPlateImageView.imageView.frame.origin.x + (previousPlateImageView.imageView.frame.size.width * Constants.BarbellImage.plateOverlapRatio)
             }
 
-            plateImageView.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
+            plateImageView.imageView.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
         }
     }
 }

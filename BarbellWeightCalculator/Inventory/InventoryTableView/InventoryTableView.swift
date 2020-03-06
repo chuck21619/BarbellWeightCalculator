@@ -63,16 +63,13 @@ class InventoryTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
             return cell
         }
         
-        guard let unitInventory = inventory.dictionary[selectedUnit.rawValue] else {
+        guard let unitDictionary = inventory.dictionary[selectedUnit.rawValue] else {
             return cell
         }
         
         let weight = self.orderedInventoryPlates[indexPath.row]
         
-        guard let plateData = unitInventory.first(where: { (plateData) -> Bool in
-            plateData.weight == weight
-        }) else {
-        
+        guard let plateData = unitDictionary[weight] else {
             return cell
         }
         
