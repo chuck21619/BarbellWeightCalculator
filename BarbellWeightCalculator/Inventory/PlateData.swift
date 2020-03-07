@@ -12,11 +12,13 @@ import UIKit
 class PlateData: NSObject, NSCoding {
     
     let size: CGSize
+    let imageName: Constants.BarbellImage.PlateImageName
     var numberOfPlates: Int
     
-    init(size: CGSize, numberOfPlates: Int) {
+    init(size: CGSize, imageName: Constants.BarbellImage.PlateImageName, numberOfPlates: Int) {
         
         self.size = size
+        self.imageName = imageName
         self.numberOfPlates = numberOfPlates
     }
     
@@ -24,17 +26,20 @@ class PlateData: NSObject, NSCoding {
     enum CodingKeys: String {
     
         case size = "size"
+        case imageName = "imageName"
         case numberOfPlates = "numberOfPlates"
     }
     func encode(with coder: NSCoder) {
         
         coder.encode(size, forKey: CodingKeys.size.rawValue)
+        coder.encode(imageName.rawValue, forKey: CodingKeys.imageName.rawValue)
         coder.encode(numberOfPlates, forKey: CodingKeys.numberOfPlates.rawValue)
     }
     
     required init?(coder: NSCoder) {
         
         self.size = coder.decodeCGSize(forKey: CodingKeys.size.rawValue)
+        self.imageName = Constants.BarbellImage.PlateImageName(rawValue: coder.decodeObject(forKey: CodingKeys.imageName.rawValue) as? String ?? "") ?? .ironBlack
         self.numberOfPlates = coder.decodeInteger(forKey: CodingKeys.numberOfPlates.rawValue)
     }
 }

@@ -191,7 +191,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
         
         self.platesPrintout.setWeights(weights)
 
-        var sizes: [CGSize] = []
+        var sizesAndImageNames: [(size:CGSize, imageName: Constants.BarbellImage.PlateImageName)] = []
         
         guard let inventoryDictionary = self.getInventory()?.dictionary,
               let unitDictionary = inventoryDictionary[selectedUnit.rawValue] else {
@@ -205,10 +205,10 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
                 continue
             }
             
-            sizes.append(plateData.size)
+            sizesAndImageNames.append((size: plateData.size, imageName: plateData.imageName))
         }
         
-        self.weightedBarbellImageView.setPlates(sizes)
+        self.weightedBarbellImageView.setPlates(sizesAndImageNames: sizesAndImageNames)
     }
     
     @IBAction func unitButtonAction(_ sender: Any) {
@@ -300,7 +300,7 @@ class ViewController: UIViewController, UITextFieldDelegate, NumberFormatterDele
 
             self.percentageSlider.value = 100
             self.percentageLabel.text = "100%"
-            self.weightedBarbellImageView.setPlates([])
+            self.weightedBarbellImageView.setPlates(sizesAndImageNames: [])
             self.weightInputField.text = ""
             self.platesPrintout.setWeights([])
             self.offsetLabel.text = ""

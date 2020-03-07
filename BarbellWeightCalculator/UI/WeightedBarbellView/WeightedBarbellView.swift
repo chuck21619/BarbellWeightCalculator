@@ -51,16 +51,16 @@ class WeightedBarbellView: UIView {
         self.plateImageViews = []
     }
     
-    func setPlates(_ sizes: [CGSize]) {
+    func setPlates(sizesAndImageNames: [(size: CGSize, imageName: Constants.BarbellImage.PlateImageName)]) {
         
         self.clearPlates()
         
-        guard let plateImage = UIImage(named: Constants.BarbellImage.barbellPlateImageName) else {
-            return
-        }
-        
-        for size in sizes {
+        for (size, imageName) in sizesAndImageNames {
             
+            guard let plateImage = UIImage(named: imageName.rawValue) else {
+            
+                continue
+            }
             let plateImageView = UIImageView(image: plateImage)
             self.addSubview(plateImageView)
             self.plateImageViews.append((imageView: plateImageView, plateSize: size))
