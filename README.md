@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eb03a2a2-0202-4e88-8a50-337d16a87891" width="50" height="50">
+</p>
+
 Barbell Weight Calculator is an iOS app, where user inputs desired weight to lift, and then displays which plates to put on the bar.
 motivation for creating this was specifically for microplates support (plates less than 2.5 pounds)
 
